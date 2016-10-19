@@ -12,7 +12,8 @@ import com.helpet.exception.DaoException;
 public class CountryDaoHibernateTest {
 
 	@Test
-	public void guardarTest() {
+	public void guardarTest() 
+	{
 		CountryDao dao = new CountryDaoHibernate();
 		Country country = new Country();
 		country.setId(1);
