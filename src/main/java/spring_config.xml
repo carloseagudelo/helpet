@@ -49,9 +49,38 @@
 		<property name="dataSource" ref="datasource"></property>
 	</bean>
 	
+	<bean id="BreedDao" class="com.helpet.iw.dao.hibernate.BreedDaoHibernate">
+		<!-- inyeccion de sessionFactory a BreedDao -->
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="CityDao" class="com.helpet.iw.dao.hibernate.CityDaoHibernate">
+		<!-- inyeccion de sessionFactory a CityDao -->
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
 	<bean id="CountryDao" class="com.helpet.iw.dao.hibernate.CountryDaoHibernate">
-	<!-- inyeccion de sessionFactory a CountryDao -->
-	<property name="sessionFactory" ref="sessionFactory"></property>
+		<!-- inyeccion de sessionFactory a CountryDao -->
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>	
+	
+	<bean id="LocationDao" class="com.helpet.iw.dao.hibernate.LocationDaoHibernate">
+		<!-- inyeccion de sessionFactory a CountryDao -->
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>	
+	
+	<bean id="PetDao" class="com.helpet.iw.dao.hibernate.PetDaoHibernate">
+		<!-- inyeccion de sessionFactory a CountryDao -->
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="UserDao" class="com.helpet.iw.dao.hibernate.UserDaoHibernate">
+		<!-- inyeccion de sessionFactory a CountryDao -->
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="clienteb1" class="com.helpet.logic.implement.CountryB1Imp">
+		<constructor-arg name="countryDao" ref="CountryDao"></constructor-arg>		
 	</bean>
 	
 

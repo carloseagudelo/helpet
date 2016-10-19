@@ -1,24 +1,30 @@
 package com.helpet.iw.dao.hibernate;
 
+import org.hibernate.Transaction;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
-
-import com.helpet.iw.dao.Datasource;
 import com.helpet.iw.dao.LocationDao;
 import com.helpet.iw.dto.Location;
 import com.helpet.iw.exception.DaoException;
 
-public class LocationDaoHibernate implements LocationDao {
+public class LocationDaoHibernate implements LocationDao 
+{
+	
+	private SessionFactory sessionFactory;
 	
 	public void guardar(Location location) throws DaoException
 	{
 		Session session = null;
+		Transaction tx = null;
 		try
 		{
-			session = Datasource.getInstance().getSession();			
+			session = sessionFactory.openSession();	
+			tx = session.beginTransaction();
 			session.save(location);
+			tx.commit();
 		}
 		catch(HibernateException e)
 		{
@@ -29,10 +35,13 @@ public class LocationDaoHibernate implements LocationDao {
 	public void actualizar(Location location) throws DaoException
 	{
 		Session session = null;
+		Transaction tx = null;
 		try
 		{
-			session = Datasource.getInstance().getSession();			
+			session = sessionFactory.openSession();	
+			tx = session.beginTransaction();
 			session.update(location);
+			tx.commit();
 		}
 		catch(HibernateException e)
 		{
@@ -46,7 +55,7 @@ public class LocationDaoHibernate implements LocationDao {
 		Location location = null;
 		try
 		{
-			session = Datasource.getInstance().getSession();
+			session = sessionFactory.openSession();
 			Criteria cri = session.createCriteria(Location.class).add(Restrictions.eq("id",id));
 			location = (Location)cri.uniqueResult();
 		}
@@ -60,15 +69,27 @@ public class LocationDaoHibernate implements LocationDao {
 	public void eliminar(Location location) throws DaoException
 	{
 		Session session = null;
+		Transaction tx = null;
 		try
 		{
-			session = Datasource.getInstance().getSession();
+			session = sessionFactory.openSession();
+			tx = session.beginTransaction();
 			session.delete(location);
+			tx.commit();
 		}
 		catch(HibernateException e)
 		{
 			throw new DaoException(e);
 		}
 	}
+	
+	public SessionFactory getSessionFactory() 
+	{
+		return sessionFactory;
+	}
 
+	public void setSessionFactory(SessionFactory sessionFactory)
+	{
+		this.sessionFactory = sessionFactory;
+	}
 }

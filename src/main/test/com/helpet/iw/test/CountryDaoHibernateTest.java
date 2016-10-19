@@ -1,4 +1,4 @@
-package com.helpet.dao.test;
+package com.helpet.iw.test;
 
 import static org.junit.Assert.*;
 
