@@ -1,5 +1,8 @@
 package com.helpet.dao;
 
+import com.helpet.dto.User;
+import com.helpet.exception.DaoException;
+
 /**
  * 
  * @author Carlos Enrique Agudelo Giraldo
@@ -9,5 +12,15 @@ package com.helpet.dao;
  *
  */
 public interface UserDao {
+	
+	void guardar(User user) throws DaoException;
+	
+	void actualizar(User user) throws DaoException;
+	
+	User buscarPaisPorNombre(String name) throws DaoException;
+	
+	User buscarPaisPorId(int id) throws DaoException;	
+	
+	void eliminar(User user) throws DaoException;
 
 }

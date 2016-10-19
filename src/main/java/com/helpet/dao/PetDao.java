@@ -1,5 +1,7 @@
 package com.helpet.dao;
 
+import com.helpet.dto.Pet;
+import com.helpet.exception.DaoException;
 
 /**
  * 
@@ -11,4 +13,14 @@ package com.helpet.dao;
  */
 public interface PetDao {
 
+	void guardar(Pet pet) throws DaoException;
+	
+	void actualizar(Pet pet) throws DaoException;
+	
+	Pet buscarPaisPorNombre(String name) throws DaoException;
+	
+	Pet buscarPaisPorId(int id) throws DaoException;
+	
+	void eliminar(Pet pet) throws DaoException;
+	
 }
