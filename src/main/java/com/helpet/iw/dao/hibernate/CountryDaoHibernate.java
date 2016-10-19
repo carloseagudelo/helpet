@@ -4,6 +4,7 @@ import com.helpet.iw.exception.DaoException;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import com.helpet.iw.dao.CountryDao;
 import com.helpet.iw.dao.Datasource;
@@ -11,7 +12,9 @@ import com.helpet.iw.dto.Country;
 
 public class CountryDaoHibernate implements CountryDao 
 {
-
+	
+	private SessionFactory sessionFactory;
+	
 	public void guardar(Country country) throws DaoException
 	{
 		Session session = null;
@@ -87,4 +90,12 @@ public class CountryDaoHibernate implements CountryDao
 			throw new DaoException(e);
 		}
 	}
+	
+	public SessionFactory getSessionFactory() {
+		return sessionFactory;
+	}
+
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}	
 }

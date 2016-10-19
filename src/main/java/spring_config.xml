@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- Obtiene el recurso con la información de la base de datos -->
+	<context:property-placeholder location="classpath:configuration/properties/connection.properties" />
+	
+	<!-- Creación del datasource -->
+	<bean id="datasource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<!-- Nombre de la clase del driver -->
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+		<!-- url de la database -->
+		<property name="url" value="${connection.url}"></property>
+		<!-- credenciales de sesion -->
+		<property name="username" value="${connection.username}"></property>
+		<property name="password" value="${connection.password}"></property>
+	</bean>
+	
+	<!-- Creamos el session Factory -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<!-- toma las propiedades de la clase Localsessionfactory -->
+		<property name="dataSource" ref="datasource"></property>
+		<property name="mappingResources">
+		<list>
+			<value>com/helpet/iw/mapping/Breed.hbn.xml</value>
+			<value>com/helpet/iw/mapping/City.hbn.xml</value>
+			<value>com/helpet/iw/mapping/Country.hbn.xml</value>
+			<value>com/helpet/iw/mapping/Location.hbn.xml</value>
+			<value>com/helpet/iw/mapping/Pet.hbn.xml</value>
+			<value>com/helpet/iw/mapping/User.hbn.xml</value>
+		</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<!-- mostrar o no mostrar el comando sql ejecuta en la terminal -->
+				<prop key="hibernate.show_sql">true</prop>
+				<!-- config si se valida logica de negocio o no -->
+				<prop key="javax.persistence.validation.mode">none</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+		<property name="dataSource" ref="datasource"></property>
+	</bean>
+	
+	<bean id="CountryDao" class="com.helpet.iw.dao.hibernate.CountryDaoHibernate">
+	<!-- inyeccion de sessionFactory a CountryDao -->
+	<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+
+</beans>
