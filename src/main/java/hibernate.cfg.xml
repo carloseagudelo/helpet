@@ -10,11 +10,11 @@
   <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
   <property name="show_sql">true</property>
   
-  <mapping resource="com/helpet/mapping/Breed.hbm.xml"/>
-  <mapping resource="com/helpet/mapping/City.hbm.xml"/>
-  <mapping resource="com/helpet/mapping/Country.hbm.xml"/>
-  <mapping resource="com/helpet/mapping/Location.hbm.xml"/>
-  <mapping resource="com/helpet/mapping/Pet.hbm.xml"/>
-  <mapping resource="com/helpet/mapping/User.hbm.xml"/>
+  <mapping resource="com/helpet/iw/mapping/Breed.hbm.xml"/>
+  <mapping resource="com/helpet/iw/mapping/City.hbm.xml"/>
+  <mapping resource="com/helpet/iw/mapping/Country.hbm.xml"/>
+  <mapping resource="com/helpet/iw/mapping/Location.hbm.xml"/>
+  <mapping resource="com/helpet/iw/mapping/Pet.hbm.xml"/>
+  <mapping resource="com/helpet/iw/mapping/User.hbm.xml"/>
  </session-factory>
 </hibernate-configuration>

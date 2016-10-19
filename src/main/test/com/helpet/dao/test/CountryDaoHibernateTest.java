@@ -4,10 +4,10 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import com.helpet.dao.CountryDao;
-import com.helpet.dao.hibernate.CountryDaoHibernate;
-import com.helpet.dto.Country;
-import com.helpet.exception.DaoException;
+import com.helpet.iw.dao.CountryDao;
+import com.helpet.iw.dao.hibernate.CountryDaoHibernate;
+import com.helpet.iw.dto.Country;
+import com.helpet.iw.exception.DaoException;
 
 public class CountryDaoHibernateTest {
 
