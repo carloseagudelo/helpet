@@ -9,6 +9,15 @@ import com.helpet.iw.dto.Country;
 import com.helpet.iw.exception.DaoException;
 import com.helpet.logic.CityB1;
 
+/**
+ * Class thats define the methods for access to methods in lauyer of data in City
+ * @author Carlos Enrique Agudelo Giraldo
+ * @email carloskikea@gmail.com
+ * @description Implements methods for Breed
+ * @date 10/17/206 
+ *
+ */
+
 public class CityB1Impl implements CityB1 {
 	
 	CityDao cityDao;

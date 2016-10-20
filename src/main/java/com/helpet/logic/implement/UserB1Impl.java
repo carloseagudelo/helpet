@@ -9,6 +9,15 @@ import com.helpet.iw.dto.User;
 import com.helpet.iw.exception.DaoException;
 import com.helpet.logic.UserB1;
 
+/**
+ * Class thats define the methods for access to methods in lauyer of data in User
+ * @author Carlos Enrique Agudelo Giraldo
+ * @email carloskikea@gmail.com
+ * @description Implements methods for Breed
+ * @date 10/17/206 
+ *
+ */
+
 public class UserB1Impl implements UserB1 {
 	
 	UserDao userDao;

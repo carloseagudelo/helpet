@@ -7,6 +7,15 @@ import com.helpet.iw.exception.DaoException;
 import com.helpet.logic.BreedB1;
 import java.util.List;
 
+/**
+ * Class thats define the methods for access to methods in lauyer of data in Breed
+ * @author Carlos Enrique Agudelo Giraldo
+ * @email carloskikea@gmail.com
+ * @description Implements methods for Breed
+ * @date 10/17/206 
+ *
+ */
+
 public class BreedB1Imp implements BreedB1 {
 
 	BreedDao breedDao;

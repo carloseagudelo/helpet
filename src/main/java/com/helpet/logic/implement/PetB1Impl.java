@@ -12,6 +12,15 @@ import com.helpet.iw.dto.User;
 import com.helpet.iw.exception.DaoException;
 import com.helpet.logic.PetB1;
 
+/**
+ * Class thats define the methods for access to methods in lauyer of data in Pet
+ * @author Carlos Enrique Agudelo Giraldo
+ * @email carloskikea@gmail.com
+ * @description Implements methods for Breed
+ * @date 10/17/206 
+ *
+ */
+
 public class PetB1Impl implements PetB1 
 {
 

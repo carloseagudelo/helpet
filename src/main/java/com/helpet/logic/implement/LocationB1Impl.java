@@ -12,6 +12,15 @@ import com.helpet.iw.dto.User;
 import com.helpet.iw.exception.DaoException;
 import com.helpet.logic.LocationB1;
 
+/**
+ * Class thats define the methods for access to methods in lauyer of data in Location
+ * @author Carlos Enrique Agudelo Giraldo
+ * @email carloskikea@gmail.com
+ * @description Implements methods for Breed
+ * @date 10/17/206 
+ *
+ */
+
 public class LocationB1Impl implements LocationB1 
 {
 

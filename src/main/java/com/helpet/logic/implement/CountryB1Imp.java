@@ -1,4 +1,5 @@
 package com.helpet.logic.implement;
+
 import com.helpet.iw.dao.CountryDao;
 import com.helpet.iw.dto.Country;
 import com.helpet.iw.exception.DaoException;
@@ -6,6 +7,14 @@ import com.helpet.logic.CountryB1;
 
 import java.util.List;
 
+/**
+ * Class thats define the methods for access to methods in lauyer of data in Country
+ * @author Carlos Enrique Agudelo Giraldo
+ * @email carloskikea@gmail.com
+ * @description Implements methods for Breed
+ * @date 10/17/206 
+ *
+ */
 
 public class CountryB1Imp implements CountryB1 {
 

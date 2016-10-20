@@ -63,7 +63,27 @@
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	
+	<bean id="BreedB1" class="com.helpet.logic.implement.BreedB1Imp">
+		<constructor-arg name="countryDao" ref="CountryDao"></constructor-arg>		
+	</bean>
+	
+	<bean id="CityB1" class="com.helpet.logic.implement.CityyB1Imp">
+		<constructor-arg name="countryDao" ref="CountryDao"></constructor-arg>		
+	</bean>
+	
 	<bean id="CountryB1" class="com.helpet.logic.implement.CountryB1Imp">
+		<constructor-arg name="countryDao" ref="CountryDao"></constructor-arg>		
+	</bean>
+	
+	<bean id="LocationB1" class="com.helpet.logic.implement.LocationB1Imp">
+		<constructor-arg name="countryDao" ref="CountryDao"></constructor-arg>		
+	</bean>
+	
+	<bean id="PetB1" class="com.helpet.logic.implement.PetB1Imp">
+		<constructor-arg name="countryDao" ref="CountryDao"></constructor-arg>		
+	</bean>
+	
+	<bean id="UserB1" class="com.helpet.logic.implement.UserB1Imp">
 		<constructor-arg name="countryDao" ref="CountryDao"></constructor-arg>		
 	</bean>
 	
