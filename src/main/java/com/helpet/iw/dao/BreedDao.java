@@ -1,5 +1,7 @@
 package com.helpet.iw.dao;
 
+import java.util.List;
+
 import com.helpet.iw.dto.Breed;
 import com.helpet.iw. exception.DaoException;
 
@@ -34,7 +36,7 @@ public interface BreedDao {
 	 * @return Objeto de tipo Breed con la informacion encontrada
 	 * @throws DaoException manejo de excepciones a partir de clase personalida, donde se lleva el error a un log de auditoria
 	 */
-	Breed buscarPaisPorNombre(String name) throws DaoException;
+	Breed buscarRazaPorNombre(String name) throws DaoException;
 	
 	/**
 	 * Metodo que busca la información de una raza por id 
@@ -42,7 +44,7 @@ public interface BreedDao {
 	 * @return Objeto de tipo Breed con la informacion encontrada
 	 * @throws DaoException manejo de excepciones a partir de clase personalida, donde se lleva el error a un log de auditoria
 	 */
-	Breed buscarPaisPorId(int id) throws DaoException;
+	Breed buscarRazaPorId(int id) throws DaoException;
 	
 	/**
 	 * Metodo que elimina la informacion de determinada Raza
@@ -50,5 +52,12 @@ public interface BreedDao {
 	 * @throws DaoException manejo de excepciones a partir de clase personalida, donde se lleva el error a un log de auditoria
 	 */
 	void eliminar(Breed breed) throws DaoException;
+	
+	/**
+	 * Metodo que lista la informacion de todas las razas registradas
+	 * @return Lista con todos los registros derazas en el sistema
+	 * @throws DaoException manejo de excepciones a partir de clase personalida, donde se lleva el error a un log de auditoria
+	 */
+	List<Breed> obtenerRazas() throws DaoException;
 
 }

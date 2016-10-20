@@ -4,12 +4,15 @@ import com.helpet.iw.exception.DaoException;
 
 import org.hibernate.Transaction;
 
+import java.util.List;
+
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import com.helpet.iw.dao.CountryDao;
+import com.helpet.iw.dto.Breed;
 import com.helpet.iw.dto.Country;
 
 /**
@@ -109,6 +112,23 @@ public class CountryDaoHibernate implements CountryDao
 		{
 			throw new DaoException(e);
 		}
+	}
+	
+	public List<Country> obtenerCiudades() throws DaoException
+	{
+		List<Country> resultado;
+		Session session = null;
+		try
+		{
+			session = sessionFactory.openSession();
+			Criteria crit = session.createCriteria(Country.class);
+			resultado = crit.list();
+		}
+		catch(HibernateException e)
+		{
+			throw new DaoException(e);
+		}
+		return resultado;
 	}
 	
 	public SessionFactory getSessionFactory() 

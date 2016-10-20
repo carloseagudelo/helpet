@@ -1,5 +1,7 @@
 package com.helpet.iw.dao;
 
+import java.util.List;
+
 import com.helpet.iw.dto.Country;
 import com.helpet.iw.exception.DaoException;
 
@@ -50,4 +52,11 @@ public interface CountryDao {
 	 * @throws DaoException manejo de excepciones a partir de clase personalida, donde se lleva el error a un log de auditoria
 	 */
 	void eliminar(Country country) throws DaoException;
+	
+	/**
+	 * Metodo que retorna una lista con la informacion de todas los paises
+	 * @return ista con la informacion de todas los paises
+	 * @throws DaoException manejo de excepciones a partir de clase personalida, donde se lleva el error a un log de auditoria
+	 */
+	List<Country> obtenerCiudades() throws DaoException;
 }

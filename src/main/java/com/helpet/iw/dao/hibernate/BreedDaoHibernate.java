@@ -18,6 +18,7 @@ import org.hibernate.criterion.Restrictions;
 import com.helpet.iw.dao.BreedDao;
 import com.helpet.iw.dto.Breed;
 import com.helpet.iw.exception.DaoException;
+import java.util.List;
 
 public class BreedDaoHibernate implements BreedDao 
 {	
@@ -57,7 +58,7 @@ public class BreedDaoHibernate implements BreedDao
 		}
 	}
 	
-	public Breed buscarPaisPorNombre(String name) throws DaoException
+	public Breed buscarRazaPorNombre(String name) throws DaoException
 	{
 		Session session = null;
 		Breed breed = null;
@@ -74,7 +75,7 @@ public class BreedDaoHibernate implements BreedDao
 		return breed;
 	}
 	
-	public Breed buscarPaisPorId(int id) throws DaoException
+	public Breed buscarRazaPorId(int id) throws DaoException
 	{
 		Session session = null;
 		Breed country = null;
@@ -106,6 +107,23 @@ public class BreedDaoHibernate implements BreedDao
 		{
 			throw new DaoException(e);
 		}
+	}
+	
+	public List<Breed> obtenerRazas() throws DaoException
+	{
+		List<Breed> resultado;
+		Session session = null;
+		try
+		{
+			session = sessionFactory.openSession();
+			Criteria crit = session.createCriteria(Breed.class);
+			resultado = crit.list();
+		}
+		catch(HibernateException e)
+		{
+			throw new DaoException(e);
+		}
+		return resultado;
 	}
 	
 	public SessionFactory getSessionFactory() 
