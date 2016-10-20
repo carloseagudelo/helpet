@@ -22,7 +22,7 @@ public class CountryB1Imp implements CountryB1 {
 		{
 			throw new NullPointerException("Debe especificar el nombre de la ciudad.");
         }	
-		if(countryDao.buscarPaisPorNombre(name) == null)
+		if(countryDao.buscarPaisPorNombre(name) != null)
 		{
 			throw new NullPointerException("La ciudad ya existe.");
 		}
@@ -37,7 +37,7 @@ public class CountryB1Imp implements CountryB1 {
 		{
 			throw new NullPointerException("Debe especificar el nombre de la ciudad.");
         }	
-		if(countryDao.buscarPaisPorNombre(name) == null)
+		if(countryDao.buscarPaisPorNombre(name) != null)
 		{
 			throw new NullPointerException("La ciudad ya existe.");
 		}

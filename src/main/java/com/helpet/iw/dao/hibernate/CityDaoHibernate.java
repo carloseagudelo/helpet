@@ -1,5 +1,7 @@
 package com.helpet.iw.dao.hibernate;
 
+import java.util.List;
+
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -7,6 +9,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 import com.helpet.iw.dao.CityDao;
+import com.helpet.iw.dto.Breed;
 import com.helpet.iw.dto.City;
 import com.helpet.iw.exception.DaoException;
 
@@ -106,6 +109,40 @@ public class CityDaoHibernate implements CityDao
 		{
 			throw new DaoException(e);
 		}
+	}
+	
+	public List<City> ObtenerCiudades() throws DaoException
+	{
+		List<City> resultado;
+		Session session = null;
+		try
+		{
+			session = sessionFactory.openSession();
+			Criteria crit = session.createCriteria(City.class);
+			resultado = crit.list();
+		}
+		catch(HibernateException e)
+		{
+			throw new DaoException(e);
+		}
+		return resultado;		
+	}
+	
+	public List<City> ObtenerCiudadesPorPais(int country) throws DaoException
+	{
+		List<City> resultado;
+		Session session = null;
+		try
+		{
+			session = sessionFactory.openSession();
+			Criteria crit = session.createCriteria(City.class).add(Restrictions.eq("country",country));
+			resultado = crit.list();
+		}
+		catch(HibernateException e)
+		{
+			throw new DaoException(e);
+		}
+		return resultado;	
 	}
 	
 	public SessionFactory getSessionFactory() 

@@ -22,7 +22,7 @@ public class BreedB1Imp implements BreedB1 {
 		{
 			throw new NullPointerException("Debe especificar el nombre de la raza.");
         }	
-		if(breedDao.buscarRazaPorNombre(name) == null)
+		if(breedDao.buscarRazaPorNombre(name) != null)
 		{
 			throw new NullPointerException("La ciudad ya existe.");
 		}
@@ -37,7 +37,7 @@ public class BreedB1Imp implements BreedB1 {
 		{
 			throw new NullPointerException("Debe especificar el nombre de la raza.");
         }	
-		if(breedDao.buscarRazaPorNombre(name) == null)
+		if(breedDao.buscarRazaPorNombre(name) != null)
 		{
 			throw new NullPointerException("La raza ya existe.");
 		}

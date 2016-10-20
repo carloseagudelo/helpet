@@ -2,6 +2,7 @@ package com.helpet.iw.dao;
 
 import com.helpet.iw.dto.City;
 import com.helpet.iw.exception.DaoException;
+import java.util.List;
 
 /**
  * 
@@ -49,5 +50,20 @@ public interface CityDao {
 	 * @throws DaoException manejo de excepciones a partir de clase personalida, donde se lleva el error a un log de auditoria
 	 */
 	void eliminar(City city) throws DaoException;
+	
+	/**
+	 * Metodo que retorna todas las ciudades
+	 * @return lista con todas las ciudades
+	 * @throws DaoException manejo de excepciones a partir de clase personalida, donde se lleva el error a un log de auditoria
+	 */
+	List<City> ObtenerCiudades() throws DaoException;
+	
+	/**
+	 * Metodo que retorna todas las ciudades por pais
+	 * @param id del pais por el que se desea discriminar la lista
+	 * @return lista con todas las ciudades pertenecientes aun pais que entra como parametro
+	 * @throws DaoException manejo de excepciones a partir de clase personalida, donde se lleva el error a un log de auditoria
+	 */
+	List<City> ObtenerCiudadesPorPais(int country) throws DaoException;
 	
 }
