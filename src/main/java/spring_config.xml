@@ -61,13 +61,14 @@
 	
 	<bean id="UserDao" class="com.helpet.iw.dao.hibernate.UserDaoHibernate">
 		<property name="sessionFactory" ref="sessionFactory"></property>
-	</bean>
+	</bean>	
 	
 	<bean id="BreedB1" class="com.helpet.logic.implement.BreedB1Imp">
 		<constructor-arg name="countryDao" ref="CountryDao"></constructor-arg>		
 	</bean>
 	
-	<bean id="CityB1" class="com.helpet.logic.implement.CityyB1Imp">
+	<bean id="CityB1" class="com.helpet.logic.implement.CityB1Impl">
+		<constructor-arg name="cityDao" ref="CityDao"></constructor-arg>	
 		<constructor-arg name="countryDao" ref="CountryDao"></constructor-arg>		
 	</bean>
 	
@@ -75,16 +76,21 @@
 		<constructor-arg name="countryDao" ref="CountryDao"></constructor-arg>		
 	</bean>
 	
-	<bean id="LocationB1" class="com.helpet.logic.implement.LocationB1Imp">
-		<constructor-arg name="countryDao" ref="CountryDao"></constructor-arg>		
+	<bean id="LocationB1" class="com.helpet.logic.implement.LocationB1Impl">
+		<constructor-arg name="userDao" ref="UserDao"></constructor-arg>	
+		<constructor-arg name="petDao" ref="PetDao"></constructor-arg>	
+		<constructor-arg name="locationDao" ref="LocationDao"></constructor-arg>		
 	</bean>
 	
-	<bean id="PetB1" class="com.helpet.logic.implement.PetB1Imp">
-		<constructor-arg name="countryDao" ref="CountryDao"></constructor-arg>		
+	<bean id="PetB1" class="com.helpet.logic.implement.PetB1Impl">
+		<constructor-arg name="petDao" ref="PetDao"></constructor-arg>
+		<constructor-arg name="userDao" ref="UserDao"></constructor-arg>
+		<constructor-arg name="breedDao" ref="BreedDao"></constructor-arg>		
 	</bean>
 	
-	<bean id="UserB1" class="com.helpet.logic.implement.UserB1Imp">
-		<constructor-arg name="countryDao" ref="CountryDao"></constructor-arg>		
+	<bean id="UserB1" class="com.helpet.logic.implement.UserB1Impl">
+		<constructor-arg name="cityDao" ref="CityDao"></constructor-arg>
+		<constructor-arg name="countryDao" ref="CountryDao"></constructor-arg>			
 	</bean>
 	
 	<bean id="CountryTest" class="com.helpet.logic.test.CountryTest">
