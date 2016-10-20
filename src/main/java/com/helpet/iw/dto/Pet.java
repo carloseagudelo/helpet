@@ -1,5 +1,7 @@
 package com.helpet.iw.dto;
 
+import java.util.Date;
+
 /**
  * 
  * @author Carlos Enrique Agudelo Giraldo
@@ -18,7 +20,8 @@ public class Pet {
 	private Integer state;
 	private String observations;
 	private User user;
-	private String image;		
+	private String image;
+	private Date date;
 	
 	public Integer getId() {
 		return id;
@@ -38,6 +41,12 @@ public class Pet {
 	public void setAge(String age) {
 		this.age = age;
 	}
+	public Breed getBreed() {
+		return breed;
+	}
+	public void setBreed(Breed breed) {
+		this.breed = breed;
+	}
 	public Integer getState() {
 		return state;
 	}
@@ -50,22 +59,24 @@ public class Pet {
 	public void setObservations(String observations) {
 		this.observations = observations;
 	}
-	public String getImage() {
-		return image;
-	}
-	public void setImage(String image) {
-		this.image = image;
-	}
-	public Breed getBreed() {
-		return breed;
-	}
-	public void setBreed(Breed breed) {
-		this.breed = breed;
-	}
 	public User getUser() {
 		return user;
 	}
 	public void setUser(User user) {
 		this.user = user;
 	}
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
+	}
+	public Date getDate() {
+		return date;
+	}
+	public void setDate(Date date) {
+		this.date = date;
+	}
+	
+	
 }

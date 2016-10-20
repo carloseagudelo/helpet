@@ -1,5 +1,7 @@
 package com.helpet.iw.dto;
 
+import java.util.Date;
+
 /**
  * 
  * @author Carlos Enrique Agudelo Giraldo
@@ -19,6 +21,8 @@ public class User {
 	private String email;
 	private String password;	
 	private String image;
+	private String document;
+	private Date date;
 	
 	public Integer getId() {
 		return id;
@@ -38,6 +42,12 @@ public class User {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+	public City getCity() {
+		return city;
+	}
+	public void setCity(City city) {
+		this.city = city;
+	}
 	public String getAddress() {
 		return address;
 	}
@@ -56,16 +66,24 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public City getCity() {
-		return city;
-	}
-	public void setCity(City city) {
-		this.city = city;
-	}
 	public String getImage() {
 		return image;
 	}
 	public void setImage(String image) {
 		this.image = image;
 	}
+	public String getDocument() {
+		return document;
+	}
+	public void setDocument(String document) {
+		this.document = document;
+	}
+	public Date getDate() {
+		return date;
+	}
+	public void setDate(Date date) {
+		this.date = date;
+	}
+	
+	
 }

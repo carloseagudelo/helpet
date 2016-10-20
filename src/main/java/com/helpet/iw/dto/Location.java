@@ -1,5 +1,7 @@
 package com.helpet.iw.dto;
 
+import java.util.Date;
+
 /**
  * 
  * @author Carlos Enrique Agudelo Giraldo
@@ -19,12 +21,25 @@ public class Location {
 	private String address;
 	private String image;
 	private String observations;
+	private Date date;
 	
 	public Integer getId() {
 		return id;
 	}
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+	public Pet getPet() {
+		return pet;
+	}
+	public void setPet(Pet pet) {
+		this.pet = pet;
 	}
 	public Float getLatitude() {
 		return latitude;
@@ -56,16 +71,12 @@ public class Location {
 	public void setObservations(String observations) {
 		this.observations = observations;
 	}
-	public User getUser() {
-		return user;
+	public Date getDate() {
+		return date;
 	}
-	public void setUser(User user) {
-		this.user = user;
+	public void setDate(Date date) {
+		this.date = date;
 	}
-	public Pet getPet() {
-		return pet;
-	}
-	public void setPet(Pet pet) {
-		this.pet = pet;
-	}
+	
+	
 }
