@@ -108,6 +108,49 @@ public class UserDaoHibernate implements UserDao
 			throw new DaoException(e);
 		}
 	}
+
+	public User BuscarUsuarioPorEmail(String email) throws DaoException
+	{
+		Session session = null;
+		User user = null;
+		try
+		{
+			session = sessionFactory.openSession();
+			Criteria cri = session.createCriteria(User.class).add(Restrictions.eq("email",email));
+			user = (User)cri.uniqueResult();
+		}
+		catch(HibernateException e)
+		{
+			throw new DaoException(e);
+		}
+		return user;
+	}
+	
+	public boolean autentificacion(String email, String password) throws DaoException
+	{
+		Session session = null;
+		User user = null;
+		try
+		{
+			session = sessionFactory.openSession();
+			Criteria cri = session.createCriteria(User.class);
+			cri.add(Restrictions.eq("email",email));
+			cri.add(Restrictions.eq("password",password));
+			user = (User)cri.uniqueResult();
+		}
+		catch(HibernateException e)
+		{
+			throw new DaoException(e);
+		}
+		if(user != null)
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+	}
 	
 	public SessionFactory getSessionFactory() 
 	{

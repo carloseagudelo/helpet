@@ -47,5 +47,20 @@ public interface UserDao {
 	 * @throws DaoException manejo de excepciones a partir de clase personalida, donde se lleva el error a un log de auditoria
 	 */
 	void eliminar(User user) throws DaoException;
+	
+	/**
+	 * Metodo que busca la informacion de un usuario por email
+	 * @param email, variable de tipo string con el correo a buscar
+	 * @throws DaoException manejo de excepciones a partir de clase personalida, donde se lleva el error a un log de auditoria
+	 */
+	User BuscarUsuarioPorEmail(String email) throws DaoException;
+	
+	/**
+	 * Metodo que valida si los datos de autentificacion de usuario son validos
+	 * @param email, variable de tipo string con el correo a autentificar
+	 * @param password, variable de tipo string con el password a autentificar
+	 * @throws DaoException manejo de excepciones a partir de clase personalida, donde se lleva el error a un log de auditoria
+	 */
+	boolean autentificacion(String email, String password) throws DaoException;
 
 }
