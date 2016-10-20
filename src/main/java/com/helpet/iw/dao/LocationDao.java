@@ -1,5 +1,7 @@
 package com.helpet.iw.dao;
 
+import java.util.List;
+
 import com.helpet.iw.dto.Location;
 import com.helpet.iw.exception.DaoException;
 
@@ -40,4 +42,11 @@ public interface LocationDao {
 	 * @throws DaoException manejo de excepciones a partir de clase personalida, donde se lleva el error a un log de auditoria
 	 */
 	void eliminar(Location location) throws DaoException;
+	
+	/**
+	 * Metodo que busca las visuaizacione de mascotas perdidas
+	 * @param location, objeto de tipo Location con la informacion necesaria para ser eliminada
+	 * @throws DaoException manejo de excepciones a partir de clase personalida, donde se lleva el error a un log de auditoria
+	 */
+	List<Location> listarVisualizaconesPorMacota(int idPet) throws DaoException;
 }

@@ -1,12 +1,16 @@
 package com.helpet.iw.dao.hibernate;
 
 import org.hibernate.Transaction;
+
+import java.util.List;
+
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import com.helpet.iw.dao.LocationDao;
+import com.helpet.iw.dto.City;
 import com.helpet.iw.dto.Location;
 import com.helpet.iw.exception.DaoException;
 
@@ -90,6 +94,23 @@ public class LocationDaoHibernate implements LocationDao
 		{
 			throw new DaoException(e);
 		}
+	}
+	
+	public List<Location> listarVisualizaconesPorMacota(int idPet) throws DaoException
+	{
+		List<Location> resultado;
+		Session session = null;
+		try
+		{
+			session = sessionFactory.openSession();
+			Criteria crit = session.createCriteria(Location.class).add(Restrictions.eq("pet",idPet));
+			resultado = crit.list();
+		}
+		catch(HibernateException e)
+		{
+			throw new DaoException(e);
+		}
+		return resultado;
 	}
 	
 	public SessionFactory getSessionFactory() 
