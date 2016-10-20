@@ -20,8 +20,7 @@ import com.helpet.iw.dto.Breed;
 import com.helpet.iw.exception.DaoException;
 
 public class BreedDaoHibernate implements BreedDao 
-{
-	
+{	
 	private SessionFactory sessionFactory;
 	
 	public void guardar(Breed breed) throws DaoException
