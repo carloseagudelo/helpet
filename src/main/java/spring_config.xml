@@ -3,7 +3,9 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:tx="http://www.springframework.org/schema/tx"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
 
 	<!-- Obtiene el recurso con la información de la base de datos -->
 	<context:property-placeholder location="classpath:configuration/properties/connection.properties" />
@@ -36,9 +38,7 @@
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
-				<!-- mostrar o no mostrar el comando sql ejecuta en la terminal -->
 				<prop key="hibernate.show_sql">true</prop>
-				<!-- config si se valida logica de negocio o no -->
 				<prop key="javax.persistence.validation.mode">none</prop>
 			</props>
 		</property>
@@ -50,36 +50,30 @@
 	</bean>
 	
 	<bean id="BreedDao" class="com.helpet.iw.dao.hibernate.BreedDaoHibernate">
-		<!-- inyeccion de sessionFactory a BreedDao -->
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	
 	<bean id="CityDao" class="com.helpet.iw.dao.hibernate.CityDaoHibernate">
-		<!-- inyeccion de sessionFactory a CityDao -->
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	
 	<bean id="CountryDao" class="com.helpet.iw.dao.hibernate.CountryDaoHibernate">
-		<!-- inyeccion de sessionFactory a CountryDao -->
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>	
 	
 	<bean id="LocationDao" class="com.helpet.iw.dao.hibernate.LocationDaoHibernate">
-		<!-- inyeccion de sessionFactory a CountryDao -->
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>	
 	
 	<bean id="PetDao" class="com.helpet.iw.dao.hibernate.PetDaoHibernate">
-		<!-- inyeccion de sessionFactory a CountryDao -->
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	
 	<bean id="UserDao" class="com.helpet.iw.dao.hibernate.UserDaoHibernate">
-		<!-- inyeccion de sessionFactory a CountryDao -->
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	
-	<bean id="clienteb1" class="com.helpet.logic.implement.CountryB1Imp">
+	<bean id="CountryB1" class="com.helpet.logic.implement.CountryB1Imp">
 		<constructor-arg name="countryDao" ref="CountryDao"></constructor-arg>		
 	</bean>
 	
