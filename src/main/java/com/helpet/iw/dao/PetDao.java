@@ -1,5 +1,7 @@
 package com.helpet.iw.dao;
 
+import java.util.List;
+
 import com.helpet.iw.dto.Pet;
 import com.helpet.iw.exception.DaoException;
 
@@ -47,5 +49,13 @@ public interface PetDao {
 	 * @throws DaoException manejo de excepciones a partir de clase personalida, donde se lleva el error a un log de auditoria
 	 */
 	void eliminar(Pet pet) throws DaoException;
+	
+	/**
+	 * Metodo que lista todas las mascotas peridas	 
+	 * @throws DaoException manejo de excepciones a partir de clase personalida, donde se lleva el error a un log de auditoria
+	 */
+	List<Pet> ListarMascotas() throws DaoException;
+	
+	
 	
 }

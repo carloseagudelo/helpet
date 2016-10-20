@@ -1,5 +1,7 @@
 package com.helpet.iw.dao.hibernate;
 
+import java.util.List;
+
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -7,6 +9,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 import com.helpet.iw.dao.PetDao;
+import com.helpet.iw.dto.City;
 import com.helpet.iw.dto.Pet;
 import com.helpet.iw.exception.DaoException;
 
@@ -107,6 +110,23 @@ public class PetDaoHibernate implements PetDao
 		{
 			throw new DaoException(e);
 		}
+	}
+	
+	public List<Pet> ListarMascotas() throws DaoException
+	{
+		List<Pet> resultado;
+		Session session = null;
+		try
+		{
+			session = sessionFactory.openSession();
+			Criteria crit = session.createCriteria(Pet.class);
+			resultado = crit.list();
+		}
+		catch(HibernateException e)
+		{
+			throw new DaoException(e);
+		}
+		return resultado;
 	}
 
 	public SessionFactory getSessionFactory() 
