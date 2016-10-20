@@ -10,6 +10,15 @@ import com.helpet.iw.dao.LocationDao;
 import com.helpet.iw.dto.Location;
 import com.helpet.iw.exception.DaoException;
 
+/**
+ * 
+ * @author Carlos Enrique Agudelo Giraldo
+ * @email carloskikea@gmail.com
+ * @description Implements methods for Location
+ * @date 10/17/206 
+ *
+ */
+
 public class LocationDaoHibernate implements LocationDao 
 {
 	

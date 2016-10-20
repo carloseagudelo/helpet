@@ -10,6 +10,15 @@ import com.helpet.iw.dao.UserDao;
 import com.helpet.iw.dto.User;
 import com.helpet.iw.exception.DaoException;
 
+/**
+ * 
+ * @author Carlos Enrique Agudelo Giraldo
+ * @email carloskikea@gmail.com
+ * @description Implements methods for User
+ * @date 10/17/206 
+ *
+ */
+
 public class UserDaoHibernate implements UserDao 
 {	
 	

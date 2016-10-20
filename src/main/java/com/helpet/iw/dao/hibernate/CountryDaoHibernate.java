@@ -12,6 +12,15 @@ import org.hibernate.criterion.Restrictions;
 import com.helpet.iw.dao.CountryDao;
 import com.helpet.iw.dto.Country;
 
+/**
+ * 
+ * @author Carlos Enrique Agudelo Giraldo
+ * @email carloskikea@gmail.com
+ * @description Implements methods for Country
+ * @date 10/17/206 
+ *
+ */
+
 public class CountryDaoHibernate implements CountryDao 
 {
 	

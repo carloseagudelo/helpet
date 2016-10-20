@@ -10,6 +10,15 @@ import com.helpet.iw.dao.PetDao;
 import com.helpet.iw.dto.Pet;
 import com.helpet.iw.exception.DaoException;
 
+/**
+ * 
+ * @author Carlos Enrique Agudelo Giraldo
+ * @email carloskikea@gmail.com
+ * @description Implements methods for Pet
+ * @date 10/17/206 
+ *
+ */
+
 public class PetDaoHibernate implements PetDao 
 {
 	

@@ -10,6 +10,15 @@ import com.helpet.iw.dao.CityDao;
 import com.helpet.iw.dto.City;
 import com.helpet.iw.exception.DaoException;
 
+/**
+ * 
+ * @author Carlos Enrique Agudelo Giraldo
+ * @email carloskikea@gmail.com
+ * @description Implements methods for City
+ * @date 10/17/206 
+ *
+ */
+
 public class CityDaoHibernate implements CityDao 
 {	
 	private SessionFactory sessionFactory;

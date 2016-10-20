@@ -22,19 +22,9 @@
 	</bean>
 	
 	<!-- Creamos el session Factory -->
-	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
-		<!-- toma las propiedades de la clase Localsessionfactory -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">		
 		<property name="dataSource" ref="datasource"></property>
-		<property name="mappingResources">
-		<list>
-			<value>com/helpet/iw/mapping/Breed.hbn.xml</value>
-			<value>com/helpet/iw/mapping/City.hbn.xml</value>
-			<value>com/helpet/iw/mapping/Country.hbn.xml</value>
-			<value>com/helpet/iw/mapping/Location.hbn.xml</value>
-			<value>com/helpet/iw/mapping/Pet.hbn.xml</value>
-			<value>com/helpet/iw/mapping/User.hbn.xml</value>
-		</list>
-		</property>
+		<property name="mappingLocations" value="com/helpet/iw/mapping/country.hbm.xml" />		
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
@@ -44,7 +34,7 @@
 		</property>
 	</bean>
 	
-	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 		<property name="dataSource" ref="datasource"></property>
 	</bean>
@@ -75,6 +65,10 @@
 	
 	<bean id="CountryB1" class="com.helpet.logic.implement.CountryB1Imp">
 		<constructor-arg name="countryDao" ref="CountryDao"></constructor-arg>		
+	</bean>
+	
+	<bean id="CountryTest" class="com.helpet.logic.test.CountryTest">
+		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	
 
