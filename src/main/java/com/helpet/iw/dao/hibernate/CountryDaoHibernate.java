@@ -71,7 +71,7 @@ public class CountryDaoHibernate implements CountryDao
 		{
 			session = sessionFactory.openSession();
 			Criteria cri = session.createCriteria(Country.class).add(Restrictions.eq("name",name));
-			country = (Country)cri.uniqueResult();
+			country = (Country)cri.setMaxResults(1).uniqueResult();
 		}
 		catch(HibernateException e)
 		{

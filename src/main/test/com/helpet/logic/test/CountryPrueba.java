@@ -8,11 +8,12 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.helpet.iw.dao.CountryDao;
 import com.helpet.iw.dto.Country;
 import com.helpet.iw.exception.DaoException;
+import com.helpet.logic.CountryB1;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"classpath:spring_config.xml"})
 
-public class CountryTest {
+public class CountryPrueba {
 	
 	private SessionFactory sessionFactory;
 	
@@ -25,16 +26,16 @@ public class CountryTest {
 	}
 	
 	@Autowired
-	CountryDao dao;
+	CountryB1 dao;
 
-	public void guardarCiudad(String name, int id)
+	public void guardarPais(String name)
 	{
 		try
 		{
-			Country country = new Country();
-			country.setId(id);
-			country.setName(name);
-			dao.guardar(country);			
+			//Country country = new Country();
+			//country.setId(id);
+			//country.setName(name);
+			dao.createCountry(name);			
 		}
 		catch (DaoException e)
 		{

@@ -68,7 +68,7 @@
 	</bean>	
 	
 	<bean id="BreedB1" class="com.helpet.logic.implement.BreedB1Imp">
-		<constructor-arg name="countryDao" ref="CountryDao"></constructor-arg>		
+		<constructor-arg name="breedDao" ref="BreedDao"></constructor-arg>		
 	</bean>
 	
 	<bean id="CityB1" class="com.helpet.logic.implement.CityB1Impl">
@@ -93,13 +93,12 @@
 	</bean>
 	
 	<bean id="UserB1" class="com.helpet.logic.implement.UserB1Impl">
-		<constructor-arg name="cityDao" ref="CityDao"></constructor-arg>
-		<constructor-arg name="countryDao" ref="CountryDao"></constructor-arg>			
+		<constructor-arg name="userDao" ref="UserDao"></constructor-arg>
+		<constructor-arg name="cityDao" ref="CityDao"></constructor-arg>			
 	</bean>
 	
-	<bean id="CountryTest" class="com.helpet.logic.test.CountryTest">
+	<bean id="CountryTest" class="com.helpet.logic.test.CountryPrueba">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	
-
 </beans>

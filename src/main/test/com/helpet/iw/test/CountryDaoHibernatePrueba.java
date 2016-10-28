@@ -9,7 +9,7 @@ import com.helpet.iw.dao.hibernate.CountryDaoHibernate;
 import com.helpet.iw.dto.Country;
 import com.helpet.iw.exception.DaoException;
 
-public class CountryDaoHibernateTest {
+public class CountryDaoHibernatePrueba {
 
 	@Test
 	public void guardarTest() 
