@@ -106,4 +106,6 @@
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	
+	<context:component-scan base-package="com.helpet.rest"></context:component-scan>
+	
 </beans>
