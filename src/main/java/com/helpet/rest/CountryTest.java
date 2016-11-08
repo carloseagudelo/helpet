@@ -1,5 +1,14 @@
 package com.helpet.rest;
 
+/*
+ * 
+ * @author Carlos Enrique Agudelo Giraldo, Laura Marcela MArtinez
+ * @email carloskikea@gmail.com, laumarlon@gmail.com
+ * @description class for open services for Country in route /rest/CountryService
+ * @date 11/08/2016 
+ *
+ */
+
 import java.rmi.RemoteException;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -29,7 +38,11 @@ public class CountryTest {
 	public void setCountryB1(CountryB1 countryB1) {
 		this.countryB1 = countryB1;
 	}
-	
+
+	/*
+	 * Metodo que lista los registros de paises registrados en formato JSON 
+	 * @throws DaoException manejo de excepciones a partir de clase personalida, donde se lleva el error a un log de auditoria
+	*/
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/list")

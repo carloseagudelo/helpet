@@ -1,5 +1,14 @@
 package com.helpet.rest;
 
+/*
+ * 
+ * @author Carlos Enrique Agudelo Giraldo, Laura Marcela MArtinez
+ * @email carloskikea@gmail.com, laumarlon@gmail.com
+ * @description class for open services for Location in route /rest/LocationService
+ * @date 11/08/2016 
+ *
+ */
+
 import java.rmi.RemoteException;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
