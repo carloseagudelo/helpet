@@ -11,6 +11,7 @@ package com.helpet.rest;
 
 import java.rmi.RemoteException;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -26,7 +27,7 @@ import com.helpet.logic.CountryB1;;
 
 @Path("CountryService")
 @Component
-public class CountryTest {
+public class CountryService {
 	
 	@Autowired
 	CountryB1 countryB1;
@@ -56,5 +57,23 @@ public class CountryTest {
 		}	
 		return lista;
 	}
+	
+	@POST	
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/create/{param}")	
+	public String CreateCountry(@PathParam("param") String name) throws RemoteException{
+		String resultado = "";
+		try{
+			countryB1.createCountry(name);
+			resultado = "sucessfull";
+		}
+		catch(DaoException e){
+			resultado = "Failed";
+			throw new RemoteException(e.getMessage(), e);
+		}
+		
+		return resultado;
+	}
+	
 	
 }
