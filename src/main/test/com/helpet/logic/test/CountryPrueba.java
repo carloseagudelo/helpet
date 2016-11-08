@@ -1,5 +1,7 @@
 package com.helpet.logic.test;
 
+import java.util.List;
+
 import org.hibernate.SessionFactory;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,15 +34,25 @@ public class CountryPrueba {
 	{
 		try
 		{
-			//Country country = new Country();
-			//country.setId(id);
-			//country.setName(name);
 			dao.createCountry(name);			
 		}
 		catch (DaoException e)
 		{
 			e.printStackTrace();
 		}
+	}
+	
+	public int listarCountry()
+	{
+		List<Country> lista = null;
+		try{
+			lista = dao.listCountry();
+		}
+		catch(DaoException e){
+			e.printStackTrace();
+		}
+		
+		return lista.size();
 	}
 
 }

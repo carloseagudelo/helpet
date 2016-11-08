@@ -1,6 +1,9 @@
 package com.helpet.logic.test;
 
+
 import org.junit.runner.RunWith;
+
+import static org.junit.Assert.*;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -15,7 +18,12 @@ public class Prueba
 
 	@Test
 	public void guardarCountry(){
-		test.guardarPais("Colombia");
+		test.guardarPais("Ecuador");
+	}
+	
+	@Test
+	public void listarCountry(){
+		assertEquals(test.listarCountry(), 3);
 	}
 
 }
