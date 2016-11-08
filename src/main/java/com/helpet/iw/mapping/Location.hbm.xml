@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 07-nov-2016 21:49:50 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.helpet.iw.dto.Location" table="LOCATION">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="user" class="com.helpet.iw.dto.User" fetch="join">
+            <column name="USER" />
+        </many-to-one>
+        <many-to-one name="pet" class="com.helpet.iw.dto.Pet" fetch="join">
+            <column name="PET" />
+        </many-to-one>
+        <property name="latitude" type="java.lang.Float">
+            <column name="LATITUDE" />
+        </property>
+        <property name="longitude" type="java.lang.Float">
+            <column name="LONGITUDE" />
+        </property>
+        <property name="address" type="java.lang.String">
+            <column name="ADDRESS" />
+        </property>
+        <property name="image" type="java.lang.String">
+            <column name="IMAGE" />
+        </property>
+        <property name="observations" type="java.lang.String">
+            <column name="OBSERVATIONS" />
+        </property>
+        <property name="date" type="java.util.Date">
+            <column name="DATE" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -26,7 +26,12 @@
 		<property name="dataSource" ref="datasource"></property>
 		<property name="mappingLocations" >		
 		<list>
-		<value>com/helpet/iw/mapping/Country.hbm.xml</value>
+			<value>com/helpet/iw/mapping/Country.hbm.xml</value>
+			<value>com/helpet/iw/mapping/Breed.hbm.xml</value>
+			<value>com/helpet/iw/mapping/City.hbm.xml</value>
+			<value>com/helpet/iw/mapping/Location.hbm.xml</value>
+			<value>com/helpet/iw/mapping/Pet.hbm.xml</value>
+			<value>com/helpet/iw/mapping/User.hbm.xml</value>
 		</list>
 		</property>
 		<property name="hibernateProperties">
