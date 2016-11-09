@@ -146,7 +146,7 @@ public class UserB1Impl implements UserB1 {
 		return userDao.autentificacion(email, password);
 	}
 
-	public void loginSocialNtwork() throws DaoException
+	public void loginSocialNetwork() throws DaoException
 	{
 		
 	}

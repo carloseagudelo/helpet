@@ -57,5 +57,5 @@ public interface UserB1 {
 	 * Metodo que realiza el login con redes sociales
 	 * @throws DaoException manejo de excepciones a partir de clase personalida, donde se lleva el error a un log de auditoria
 	 */
-	void loginSocialNtwork() throws DaoException;
+	void loginSocialNetwork() throws DaoException;
 }

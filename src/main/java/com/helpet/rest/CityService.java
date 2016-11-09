@@ -111,7 +111,7 @@ public class CityService {
 	@DELETE	
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/delete/id/{param}")
-	public String deleteCountry(@PathParam("param") Integer id) throws RemoteException{
+	public String deleteCity(@PathParam("param") Integer id) throws RemoteException{
 		String resultado = "";
 		try{
 			cityB1.deleteCity(id);
@@ -132,7 +132,7 @@ public class CityService {
 	@POST	
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/create/name/{param}/id/{param1}")	
-	public String CreateCountry(@PathParam("param") String name, @PathParam("param1") Integer id) throws RemoteException{
+	public String CreateCity(@PathParam("param") String name, @PathParam("param1") Integer id) throws RemoteException{
 		String resultado = "";
 		try{
 			cityB1.createCity(name, id);
