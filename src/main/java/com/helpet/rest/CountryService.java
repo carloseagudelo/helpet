@@ -10,8 +10,7 @@ package com.helpet.rest;
  */
 
 import java.rmi.RemoteException;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
+import javax.ws.rs.*;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -42,7 +41,8 @@ public class CountryService {
 
 	/*
 	 * Metodo que lista los registros de paises registrados en formato JSON 
-	 * @throws DaoException manejo de excepciones a partir de clase personalida, donde se lleva el error a un log de auditoria
+	 * @throws RemoteException manejo de excepciones a partir de clase personalida, donde se lleva el error a un log de auditoria
+	 * @return lista en formato JSON con la información de los registros de la tabla Country
 	*/
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
@@ -58,9 +58,14 @@ public class CountryService {
 		return lista;
 	}
 	
+	/*
+	 * Metodo que hace la inserción de informacion de un pais donde el nombre del pais entra como parametro a travez de la URL 
+	 * @throws RemoteException manejo de excepciones a partir de clase personalida, donde se lleva el error a un log de auditoria
+	 * @return mensaje indicando el estado del proceso
+	*/
 	@POST	
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("/create/{param}")	
+	@Path("/create/name/{param}")	
 	public String CreateCountry(@PathParam("param") String name) throws RemoteException{
 		String resultado = "";
 		try{
@@ -70,8 +75,49 @@ public class CountryService {
 		catch(DaoException e){
 			resultado = "Failed";
 			throw new RemoteException(e.getMessage(), e);
+		}		
+		return resultado;
+	}
+	
+	/*
+	 * Metodo que actualiza la informacion de un registro  
+	 * @throws RemoteException manejo de excepciones a partir de clase personalida, donde se lleva el error a un log de auditoria
+	 * @return mensaje indicando el estado del proceso
+	*/
+	@PUT	
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/update/name/{param}/id/{param1}")
+	public String updateCountry(@PathParam("param") String name, @PathParam("param1") Integer id) throws RemoteException{
+		String resultado = "";
+		try{
+			countryB1.updateCountry(name, id);
+			resultado = "sucessfull";
 		}
-		
+		catch(DaoException e){
+			resultado = "Failed";
+			throw new RemoteException(e.getMessage(), e);
+		}		
+		return resultado;
+	}
+	
+	/*
+	 * Metodo que elimina la informacion de un registro  
+	 * @throws RemoteException manejo de excepciones a partir de clase personalida, donde se lleva el error a un log de auditoria
+	 * @return mensaje indicando el estado del proceso
+	*/
+	@DELETE	
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/delete/id/{param}")
+	public String deleteCountry(@PathParam("param") Integer id) throws RemoteException{
+		String resultado = "";
+		try{
+			countryB1.deleteCountry(id);
+			resultado = "sucessfull";
+		}
+		catch(DaoException e){
+			resultado = "Failed";
+			throw new RemoteException(e.getMessage(), e);
+		}		
 		return resultado;
 	}
 	
