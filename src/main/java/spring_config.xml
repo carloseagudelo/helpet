@@ -26,12 +26,12 @@
 		<property name="dataSource" ref="datasource"></property>
 		<property name="mappingLocations" >		
 		<list>
-			<value>com/helpet/iw/mapping/Country.hbm.xml</value>
-			<value>com/helpet/iw/mapping/Breed.hbm.xml</value>
-			<value>com/helpet/iw/mapping/City.hbm.xml</value>
-			<value>com/helpet/iw/mapping/Location.hbm.xml</value>
-			<value>com/helpet/iw/mapping/Pet.hbm.xml</value>
-			<value>com/helpet/iw/mapping/User.hbm.xml</value>
+			<value>classpath:com/helpet/iw/mapping/Country.hbm.xml</value>
+			<value>classpath:com/helpet/iw/mapping/Breed.hbm.xml</value>
+			<value>classpath:com/helpet/iw/mapping/City.hbm.xml</value>
+			<value>classpath:com/helpet/iw/mapping/Location.hbm.xml</value>
+			<value>classpath:com/helpet/iw/mapping/Pet.hbm.xml</value>
+			<value>classpath:com/helpet/iw/mapping/User.hbm.xml</value>
 		</list>
 		</property>
 		<property name="hibernateProperties">
@@ -76,28 +76,28 @@
 		<constructor-arg name="breedDao" ref="BreedDao"></constructor-arg>		
 	</bean>
 	
-	<bean id="CityB1" class="com.helpet.logic.implement.CityB1Impl">
+	<bean id="cityB1" class="com.helpet.logic.implement.CityB1Impl">
 		<constructor-arg name="cityDao" ref="CityDao"></constructor-arg>	
 		<constructor-arg name="countryDao" ref="CountryDao"></constructor-arg>		
 	</bean>
 	
-	<bean id="CountryB1" class="com.helpet.logic.implement.CountryB1Imp">
+	<bean id="countryB1" class="com.helpet.logic.implement.CountryB1Imp">
 		<constructor-arg name="countryDao" ref="CountryDao"></constructor-arg>		
 	</bean>
 	
-	<bean id="LocationB1" class="com.helpet.logic.implement.LocationB1Impl">
+	<bean id="locationB1" class="com.helpet.logic.implement.LocationB1Impl">
 		<constructor-arg name="userDao" ref="UserDao"></constructor-arg>	
 		<constructor-arg name="petDao" ref="PetDao"></constructor-arg>	
 		<constructor-arg name="locationDao" ref="LocationDao"></constructor-arg>		
 	</bean>
 	
-	<bean id="PetB1" class="com.helpet.logic.implement.PetB1Impl">
+	<bean id="petB1" class="com.helpet.logic.implement.PetB1Impl">
 		<constructor-arg name="petDao" ref="PetDao"></constructor-arg>
 		<constructor-arg name="userDao" ref="UserDao"></constructor-arg>
 		<constructor-arg name="breedDao" ref="BreedDao"></constructor-arg>		
 	</bean>
 	
-	<bean id="UserB1" class="com.helpet.logic.implement.UserB1Impl">
+	<bean id="userB1" class="com.helpet.logic.implement.UserB1Impl">
 		<constructor-arg name="userDao" ref="UserDao"></constructor-arg>
 		<constructor-arg name="cityDao" ref="CityDao"></constructor-arg>			
 	</bean>

@@ -8,8 +8,8 @@
   
   <servlet>
 		<servlet-name>jersey-serlvet</servlet-name>
-		<servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class> 
-		<!-- <servlet-class>com.sun.jersey.spi.spring.container.servlet.SpringServlet</servlet-class>-->  
+		<!-- <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>-->  
+		<servlet-class>com.sun.jersey.spi.spring.container.servlet.SpringServlet</servlet-class> 
 		<init-param>
 		     <param-name>com.sun.jersey.config.property.packages</param-name>
 		     <param-value>com.helpet.rest</param-value>
@@ -22,13 +22,13 @@
 		<url-pattern>/rest/*</url-pattern>
 	</servlet-mapping>
   
-  	<!-- <listener>
+  	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath:spring_config.xml</param-value>
-	</context-param> -->
+	</context-param>
   
 </web-app>
