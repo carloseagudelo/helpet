@@ -11,7 +11,11 @@ package com.helpet.rest;
 
 
 import java.rmi.RemoteException;
+
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -43,7 +47,8 @@ public class CityService {
 	/*
 	 * Metodo que lista los registros de paises registrados en formato JSON 
 	 * @throws DaoException manejo de excepciones a partir de clase personalida, donde se lleva el error a un log de auditoria
-	 */
+	 * @return lista de los registros en formato JSON
+	*/
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/list")
@@ -57,5 +62,88 @@ public class CityService {
 		}	
 		return lista;
 	}
+	
+	/*
+	 * Metodo que lista los registros de las ciudades discriminados por ciudad registrados en formato JSON 
+	 * @throws DaoException manejo de excepciones a partir de clase personalida, donde se lleva el error a un log de auditoria
+	 * @return lista de los registros en formato JSON
+	*/
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/list/id/{param}")
+	public List<City> listCityPerCountry(@PathParam("param") Integer id) throws RemoteException {
+		List<City> lista = null;		
+		try{
+			lista =  cityB1.listCitysPerCountry(id);
+		}
+		catch(DaoException e){
+			throw new RemoteException(e.getMessage(), e);
+		}	
+		return lista;
+	}
+	
+	/*
+	 * Metodo que actualiza la informacion de un registro  
+	 * @throws RemoteException manejo de excepciones a partir de clase personalida, donde se lleva el error a un log de auditoria
+	 * @return mensaje indicando el estado del proceso
+	*/
+	@PUT	
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/update/name/{param}/id/{param1}")
+	public String updateCity(@PathParam("param") String name, @PathParam("param1") Integer id) throws RemoteException{
+		String resultado = "";
+		try{
+			cityB1.updateCity(name, id);
+			resultado = "sucessfull";
+		}
+		catch(DaoException e){
+			resultado = "Failed";
+			throw new RemoteException(e.getMessage(), e);
+		}		
+		return resultado;
+	}
+	
+	/*
+	 * Metodo que elimina la informacion de un registro  
+	 * @throws RemoteException manejo de excepciones a partir de clase personalida, donde se lleva el error a un log de auditoria
+	 * @return mensaje indicando el estado del proceso
+	*/
+	@DELETE	
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/delete/id/{param}")
+	public String deleteCountry(@PathParam("param") Integer id) throws RemoteException{
+		String resultado = "";
+		try{
+			cityB1.deleteCity(id);
+			resultado = "sucessfull";
+		}
+		catch(DaoException e){
+			resultado = "Failed";
+			throw new RemoteException(e.getMessage(), e);
+		}		
+		return resultado;
+	}
+	
+	/*
+	 * Metodo que hace la inserción de informacion de un pais donde el nombre del pais entra como parametro a travez de la URL 
+	 * @throws RemoteException manejo de excepciones a partir de clase personalida, donde se lleva el error a un log de auditoria
+	 * @return mensaje indicando el estado del proceso
+	*/
+	@POST	
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/create/name/{param}/id/{param1}")	
+	public String CreateCountry(@PathParam("param") String name, @PathParam("param1") Integer id) throws RemoteException{
+		String resultado = "";
+		try{
+			cityB1.createCity(name, id);
+			resultado = "sucessfull";
+		}
+		catch(DaoException e){
+			resultado = "Failed";
+			throw new RemoteException(e.getMessage(), e);
+		}		
+		return resultado;
+	}
+	
 
 }

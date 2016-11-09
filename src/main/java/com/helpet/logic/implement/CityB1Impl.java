@@ -29,7 +29,7 @@ public class CityB1Impl implements CityB1 {
 		this.countryDao = countryDao;
 	}
 
-	public void createCity(String name, int cityId) throws DaoException 
+	public void createCity(String name, int countryId) throws DaoException 
 	{
 		if (name == null || "".equals(name.trim()))
 		{
@@ -39,7 +39,7 @@ public class CityB1Impl implements CityB1 {
 		{
 			throw new NullPointerException("La ciudad ya existe.");
 		}
-		Country country = countryDao.buscarPaisPorId(cityId);
+		Country country = countryDao.buscarPaisPorId(countryId);
 		if(country == null)
 		{
 			throw new NullPointerException("El pais al que va asignar la ciudad no existe.");

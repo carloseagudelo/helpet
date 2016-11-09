@@ -23,7 +23,7 @@ public interface CityB1 {
 	 * @param cityId
 	 * @throws DaoException manejo de excepciones a partir de clase personalida, donde se lleva el error a un log de auditoria
 	 */
-	void createCity(String name, int cityId) throws DaoException;
+	void createCity(String name, int countryId) throws DaoException;	
 	
 	/**
 	 * Metodo que actualiza la informacion de una ciudad en el sistema
