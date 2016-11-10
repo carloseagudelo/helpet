@@ -15,6 +15,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,8 @@ import org.springframework.stereotype.Component;
 
 import com.helpet.iw.dto.Country;
 import com.helpet.iw.exception.DaoException;
-import com.helpet.logic.CountryB1;;
+import com.helpet.logic.CountryB1;
+import com.helpet.rest.dto.CountryWs;;
 
 @Path("CountryService")
 @Component
@@ -47,15 +49,20 @@ public class CountryService {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/list")
-	public List<Country> listCountry() throws RemoteException {
-		List<Country> lista = null;		
+	public List<CountryWs> listCountry() throws RemoteException {
+		List<Country> lista = null;
+		List<CountryWs> resultado = new ArrayList<CountryWs>();
 		try{
 			lista =  countryB1.listCountry();
+			for (Country country : lista){
+				CountryWs countryw = new CountryWs(country.getId(), country.getName());
+				resultado.add(countryw);
+			}
 		}
 		catch(DaoException e){
 			throw new RemoteException(e.getMessage(), e);
 		}	
-		return lista;
+		return resultado;
 	}
 	
 	/*
@@ -120,6 +127,8 @@ public class CountryService {
 		}		
 		return resultado;
 	}
+	
+	
 	
 	
 }
