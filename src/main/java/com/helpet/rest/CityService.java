@@ -20,12 +20,15 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.helpet.logic.CityB1;
+import com.helpet.rest.dto.CityWs;
 import com.helpet.iw.dto.City;
 import com.helpet.iw.exception.DaoException;
 
@@ -52,15 +55,20 @@ public class CityService {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/list")
-	public List<City> listCity() throws RemoteException {
-		List<City> lista = null;		
+	public List<CityWs> listCity() throws RemoteException {
+		List<City> lista = null;
+		List<CityWs> resultado = new ArrayList<CityWs>();		
 		try{
 			lista =  cityB1.listCitys();
+			for(City city : lista){
+				CityWs cityw = new CityWs(city.getId(), city.getName(), city.getCountry());
+				resultado.add(cityw);
+			}
 		}
 		catch(DaoException e){
 			throw new RemoteException(e.getMessage(), e);
 		}	
-		return lista;
+		return resultado;
 	}
 	
 	/*
@@ -72,9 +80,14 @@ public class CityService {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/list/id/{param}")
 	public List<City> listCityPerCountry(@PathParam("param") Integer id) throws RemoteException {
-		List<City> lista = null;		
+		List<City> lista = null;
+		List<CityWs> resultado = new ArrayList<CityWs>();
 		try{
 			lista =  cityB1.listCitysPerCountry(id);
+			for(City city : lista){
+				CityWs cityw = new CityWs(city.getId(), city.getName(), city.getCountry());
+				resultado.add(cityw);
+			}
 		}
 		catch(DaoException e){
 			throw new RemoteException(e.getMessage(), e);

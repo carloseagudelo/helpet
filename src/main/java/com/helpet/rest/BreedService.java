@@ -19,12 +19,15 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.helpet.logic.BreedB1;
+import com.helpet.rest.dto.BreedWs;
 import com.helpet.iw.dto.Breed;
 import com.helpet.iw.exception.DaoException;
 
@@ -51,15 +54,20 @@ public class BreedService {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/list")
-	public List<Breed> listBreed() throws RemoteException {
-		List<Breed> lista = null;		
+	public List<BreedWs> listBreed() throws RemoteException {
+		List<Breed> lista = null;	
+		List<BreedWs> resultado = new ArrayList<BreedWs>();
 		try{
 			lista =  breedB1.listBreeds();
+			for(Breed breed : lista){
+				BreedWs breedw = new BreedWs(breed.getId(), breed.getName(), breed.getName());
+				resultado.add(breedw);
+			}
 		}
 		catch(DaoException e){
 			throw new RemoteException(e.getMessage(), e);
 		}	
-		return lista;
+		return resultado;
 	}
 	
 	/*
