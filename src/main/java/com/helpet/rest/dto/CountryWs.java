@@ -1,5 +1,14 @@
 package com.helpet.rest.dto;
 
+/**
+ * 
+ * @author Carlos Enrique Agudelo Giraldo
+ * @email carloskikea@gmail.com
+ * @description DTO class that represents the DTO Country this represent as service
+ * @date 10/17/206  
+ * 
+*/
+
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
