@@ -19,6 +19,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -78,7 +79,7 @@ public class BreedService {
 	@POST	
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/create/name/{param}")	
-	public String CreateBreed(@PathParam("param") String name) throws RemoteException{
+	public Response CreateBreed(@PathParam("param") String name) throws RemoteException{
 		String resultado = "";
 		try{
 			breedB1.createBreed(name);
@@ -88,7 +89,7 @@ public class BreedService {
 			resultado = "Failed";
 			throw new RemoteException(e.getMessage(), e);
 		}		
-		return resultado;
+		return Response.status(201).entity(resultado).build();
 	}
 	
 	/*
@@ -99,7 +100,7 @@ public class BreedService {
 	@PUT	
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/update/name/{param}/id/{param1}")
-	public String updateBreed(@PathParam("param") String name, @PathParam("param1") Integer id) throws RemoteException{
+	public Response updateBreed(@PathParam("param") String name, @PathParam("param1") Integer id) throws RemoteException{
 		String resultado = "";
 		try{
 			breedB1.updateBreed(name, id);
@@ -109,7 +110,7 @@ public class BreedService {
 			resultado = "Failed";
 			throw new RemoteException(e.getMessage(), e);
 		}		
-		return resultado;
+		return Response.status(201).entity(resultado).build();
 	}
 	
 	/*
@@ -120,7 +121,7 @@ public class BreedService {
 	@DELETE	
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/delete/id/{param}")
-	public String deleteBreed(@PathParam("param") Integer id) throws RemoteException{
+	public Response deleteBreed(@PathParam("param") Integer id) throws RemoteException{
 		String resultado = "";
 		try{
 			breedB1.deleteBreed(id);
@@ -130,7 +131,7 @@ public class BreedService {
 			resultado = "Failed";
 			throw new RemoteException(e.getMessage(), e);
 		}		
-		return resultado;
+		return Response.status(201).entity(resultado).build();
 	}
 
 }

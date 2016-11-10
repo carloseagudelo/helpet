@@ -15,6 +15,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
 import java.util.List;
 import java.util.Date;
 
@@ -48,7 +50,7 @@ public class UserService {
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/create/name/{param}/lasname/{param1}/cityId/{param2}/addres/{param3}/email/{param4}/password/{param5}/image/{param6}/document/{param7}/date/{param8}")
-	public String CreateUser(@PathParam("param") String name, @PathParam("param1") String lastName, 
+	public Response CreateUser(@PathParam("param") String name, @PathParam("param1") String lastName, 
 			@PathParam("param2") Integer id, @PathParam("param3") String address,
 			@PathParam("param4") String email, @PathParam("param5") String password,
 			@PathParam("param6") String image, @PathParam("param7") String document,
@@ -62,7 +64,7 @@ public class UserService {
 			resultado = "Failed";
 			throw new RemoteException(e.getMessage(), e);
 		}		
-		return resultado;	
+		return Response.status(201).entity(resultado).build();	
 	}
 	
 	/*
@@ -73,7 +75,7 @@ public class UserService {
 	@PUT
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/update/name/{param}/lasname/{param1}/cityId/{param2}/addres/{param3}/email/{param4}/password/{param5}/image/{param6}/document/{param7}/date/{param8}")
-	public String updateUser(@PathParam("param") String name, @PathParam("param1") String lastName, 
+	public Response updateUser(@PathParam("param") String name, @PathParam("param1") String lastName, 
 			@PathParam("param2") Integer id, @PathParam("param3") String address,
 			@PathParam("param4") String email, @PathParam("param5") String password,
 			@PathParam("param6") String image, @PathParam("param7") String document,
@@ -87,7 +89,7 @@ public class UserService {
 			resultado = "Failed";
 			throw new RemoteException(e.getMessage(), e);
 		}		
-		return resultado;	
+		return Response.status(201).entity(resultado).build();	
 	}
 	
 	/*
@@ -98,23 +100,21 @@ public class UserService {
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/login/user/{param}/password/{param1}")
-	public String login(@PathParam("param") String email, @PathParam("param1") String password) throws RemoteException {
+	public Response login(@PathParam("param") String email, @PathParam("param1") String password) throws RemoteException {
 		boolean log = false;
-		String resultado = "";
 		try{
 			log = userB1.login(email, password);
 		}
 		catch(DaoException e){
-			resultado = "Failed";
 			throw new RemoteException(e.getMessage(), e);
 		}		
 		if(log == true)
 		{
-			return "sucessfull";
+			return Response.status(201).entity("Succesfull").build();
 		}
 		else
 		{
-			return "failed";
+			return Response.status(201).entity("Failed").build();
 		}
 	}
 

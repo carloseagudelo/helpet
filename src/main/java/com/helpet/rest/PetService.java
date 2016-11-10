@@ -44,6 +44,11 @@ public class PetService {
 		this.petB1 = petB1;
 	}
 	
+	/*
+	 * Metodo que lista los registros de las mascotas registrados en formato JSON 
+	 * @throws RemoteException manejo de excepciones a partir de clase personalida, donde se lleva el error a un log de auditoria
+	 * @return lista en formato JSON con la información de los registros de la tabla Pet
+	*/
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/list")

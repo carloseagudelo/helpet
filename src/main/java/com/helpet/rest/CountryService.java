@@ -15,6 +15,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +26,7 @@ import org.springframework.stereotype.Component;
 import com.helpet.iw.dto.Country;
 import com.helpet.iw.exception.DaoException;
 import com.helpet.logic.CountryB1;
-import com.helpet.rest.dto.CountryWs;;
+import com.helpet.rest.dto.CountryWs;
 
 @Path("CountryService")
 @Component
@@ -73,7 +75,7 @@ public class CountryService {
 	@POST	
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/create/name/{param}")	
-	public String CreateCountry(@PathParam("param") String name) throws RemoteException{
+	public Response CreateCountry(@PathParam("param") String name) throws RemoteException{
 		String resultado = "";
 		try{
 			countryB1.createCountry(name);
@@ -83,7 +85,7 @@ public class CountryService {
 			resultado = "Failed";
 			throw new RemoteException(e.getMessage(), e);
 		}		
-		return resultado;
+		return Response.status(201).entity(resultado).build();
 	}
 	
 	/*
@@ -94,7 +96,7 @@ public class CountryService {
 	@PUT	
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/update/name/{param}/id/{param1}")
-	public String updateCountry(@PathParam("param") String name, @PathParam("param1") Integer id) throws RemoteException{
+	public Response updateCountry(@PathParam("param") String name, @PathParam("param1") Integer id) throws RemoteException{
 		String resultado = "";
 		try{
 			countryB1.updateCountry(name, id);
@@ -104,7 +106,7 @@ public class CountryService {
 			resultado = "Failed";
 			throw new RemoteException(e.getMessage(), e);
 		}		
-		return resultado;
+		return Response.status(201).entity(resultado).build();
 	}
 	
 	/*
@@ -115,7 +117,7 @@ public class CountryService {
 	@DELETE	
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/delete/id/{param}")
-	public String deleteCountry(@PathParam("param") Integer id) throws RemoteException{
+	public Response deleteCountry(@PathParam("param") Integer id) throws RemoteException{
 		String resultado = "";
 		try{
 			countryB1.deleteCountry(id);
@@ -125,7 +127,7 @@ public class CountryService {
 			resultado = "Failed";
 			throw new RemoteException(e.getMessage(), e);
 		}		
-		return resultado;
+		return Response.status(201).entity(resultado).build();
 	}
 	
 	

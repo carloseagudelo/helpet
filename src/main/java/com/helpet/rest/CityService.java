@@ -20,6 +20,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -103,7 +104,7 @@ public class CityService {
 	@PUT	
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/update/name/{param}/id/{param1}")
-	public String updateCity(@PathParam("param") String name, @PathParam("param1") Integer id) throws RemoteException{
+	public Response updateCity(@PathParam("param") String name, @PathParam("param1") Integer id) throws RemoteException{
 		String resultado = "";
 		try{
 			cityB1.updateCity(name, id);
@@ -113,7 +114,7 @@ public class CityService {
 			resultado = "Failed";
 			throw new RemoteException(e.getMessage(), e);
 		}		
-		return resultado;
+		return Response.status(201).entity(resultado).build();
 	}
 	
 	/*
@@ -124,7 +125,7 @@ public class CityService {
 	@DELETE	
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/delete/id/{param}")
-	public String deleteCity(@PathParam("param") Integer id) throws RemoteException{
+	public Response deleteCity(@PathParam("param") Integer id) throws RemoteException{
 		String resultado = "";
 		try{
 			cityB1.deleteCity(id);
@@ -134,7 +135,7 @@ public class CityService {
 			resultado = "Failed";
 			throw new RemoteException(e.getMessage(), e);
 		}		
-		return resultado;
+		return Response.status(201).entity(resultado).build();
 	}
 	
 	/*
@@ -145,7 +146,7 @@ public class CityService {
 	@POST	
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/create/name/{param}/id/{param1}")	
-	public String CreateCity(@PathParam("param") String name, @PathParam("param1") Integer id) throws RemoteException{
+	public Response CreateCity(@PathParam("param") String name, @PathParam("param1") Integer id) throws RemoteException{
 		String resultado = "";
 		try{
 			cityB1.createCity(name, id);
@@ -155,7 +156,7 @@ public class CityService {
 			resultado = "Failed";
 			throw new RemoteException(e.getMessage(), e);
 		}		
-		return resultado;
+		return Response.status(201).entity(resultado).build();
 	}
 	
 

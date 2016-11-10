@@ -49,7 +49,7 @@ public interface LocationB1 {
 	void updateLocation(int id, int userId, int petId, float latitude, float longitude, String address, String image, String Observations, Date  date) throws DaoException;
 	
 	/**
-	 * Metodo que muetsra la informacion registrada en la visualizacion de una mascota vsualizada
+	 * Metodo que muetsra la informacion registrada en la visualizacion de una mascota seleccionada
 	 * @param id
 	 * @return
 	 * @throws DaoException manejo de excepciones a partir de clase personalida, donde se lleva el error a un log de auditoria
