@@ -15,12 +15,17 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.helpet.logic.PetB1;
+import com.helpet.rest.dto.BreedWs;
+import com.helpet.rest.dto.PetWs;
+import com.helpet.iw.dto.Breed;
 import com.helpet.iw.dto.Pet;
 import com.helpet.iw.exception.DaoException;
 
@@ -39,6 +44,24 @@ public class PetService {
 		this.petB1 = petB1;
 	}
 	
-	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/list")
+	public List<PetWs> ListPet() throws RemoteException{
+		List<Pet> lista = null;
+		List<PetWs> resultado = new ArrayList<PetWs>();
+		try{
+			lista =  petB1.listPet();
+			for(Pet pet : lista){
+				PetWs petw = new PetWs(pet.getId(), pet.getName(), pet.getAge(), pet.getBreed(), pet.getState(), pet.getObservations(), 
+						pet.getUser(), pet.getImage(), pet.getDate());
+				resultado.add(petw);
+			}
+		}
+		catch(DaoException e){
+			throw new RemoteException(e.getMessage(), e);
+		}
+		return resultado;
+	}
 
 }
