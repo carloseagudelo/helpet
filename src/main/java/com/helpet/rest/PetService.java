@@ -10,13 +10,12 @@ package com.helpet.rest;
  */
 
 import java.rmi.RemoteException;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +25,7 @@ import com.helpet.logic.PetB1;
 import com.helpet.rest.dto.BreedWs;
 import com.helpet.rest.dto.PetWs;
 import com.helpet.iw.dto.Breed;
+import com.helpet.iw.dto.Location;
 import com.helpet.iw.dto.Pet;
 import com.helpet.iw.exception.DaoException;
 
@@ -67,6 +67,71 @@ public class PetService {
 			throw new RemoteException(e.getMessage(), e);
 		}
 		return resultado;
+	}
+	
+	/*
+	 * Metodo que realiza la insercion de la informacion de la mascota
+	 * @throws RemoteException manejo de excepciones a partir de clase personalida, donde se lleva el error a un log de auditoria
+	 * @return mensaje indicando el estado del proceso
+	*/
+	@POST
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/create/name/{param}/age/{param1}/state/{param2}/observation/{param3}/email/{param4}/date/{param5}/userId/{param6}/breedId/{param7}")
+	public Response registerPet(@PathParam("param") String name, @PathParam("param1") String age, 
+			@PathParam("param2") Integer state, @PathParam("param3") String observation,
+			@PathParam("param4") String image, @PathParam("param5") Date date,
+			@PathParam("param6") Integer userId, @PathParam("param7") Integer breedId) throws RemoteException {
+		String resultado = "";
+		try{
+			petB1.registrationPet(name, age, state, observation, image, date, userId, breedId);
+			resultado = "sucessfull";
+		}
+		catch(DaoException e){
+			resultado = "Failed";
+			throw new RemoteException(e.getMessage(), e);
+		}		
+		return Response.status(201).entity(resultado).build();	
+	}
+	
+	/*
+	 * Metodo que realiza la actualizacion de la informacion de la mascota
+	 * @throws RemoteException manejo de excepciones a partir de clase personalida, donde se lleva el error a un log de auditoria
+	 * @return mensaje indicando el estado del proceso
+	*/
+	@PUT
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/update/id/{params8}/name/{param}/age/{param1}/state/{param2}/observation/{param3}/email/{param4}/date/{param5}/userId/{param6}/breedId/{param7}")
+	public Response updateUser(@PathParam("param") String name, @PathParam("param1") String age, 
+			@PathParam("param2") Integer state, @PathParam("param3") String observation,
+			@PathParam("param4") String image, @PathParam("param5") Date date,
+			@PathParam("param6") Integer userId, @PathParam("param7") Integer breedId, @PathParam("param8") Integer id) throws RemoteException {		
+		String resultado = "";
+		try{
+			petB1.updatePet(id, name, age, state, observation, image, date, userId, breedId);
+			resultado = "sucessfull";
+		}
+		catch(DaoException e){
+			resultado = "Failed";
+			throw new RemoteException(e.getMessage(), e);
+		}		
+		return Response.status(201).entity(resultado).build();	
+	}
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/show/id/{param}")
+	public PetWs showPet(@PathParam("param") Integer id) throws RemoteException{
+		Pet pet = null;
+		PetWs petW = null;
+		try{
+			pet =  petB1.showPetInfotmation(id);
+			petW = new PetWs(pet.getId(), pet.getName(), pet.getAge(), pet.getBreed(), pet.getState(),
+					pet.getObservations(), pet.getUser(), pet.getImage(), pet.getDate());
+		}
+		catch(DaoException e){
+			throw new RemoteException(e.getMessage(), e);
+		}	
+		return petW;
 	}
 
 }
