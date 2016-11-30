@@ -1,0 +1,44 @@
+<!DOCTYPE  html>
+<!--ng-app hace referencia al nombre de nuestro modulo-->
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<title>HelPet</title>
+
+<link  rel="stylesheet" type="text/css" href="css/normalize.css" />
+<link rel="stylesheet" type="text/css" href="css/foundation.min.css" />
+<link rel="stylesheet" type="text/css" href="css/estilos.css"  />
+</head>
+
+<script type="text/javascript" src="js/angular.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript" src="js/controllers.js"></script>
+
+<body ng-app="app">
+	<!--añadimos aquí el controlador appController ya que será donde mostremos las mascotas-->
+	<br>
+	<div class="row">
+		<a href="#">
+			<img src="img/mini_banner.png"/>
+		</a>
+	</div>
+	<br>
+	<div class="row" ng-controller="appController">
+		<ul class="breadcrumbs">
+			  <li><a href="#">Inicio</a></li>
+			  <li><a href="#/add">Añadir mascota</a></li>
+			  <li><a href="../user/index_user.html#/add">Añadir Usuario</a></li>
+	    </ul>
+	    <!--aquí es donde cargarán todas las vistas dependiendo de la url-->
+		<div ng-view></div>
+		
+		<div>
+			<center>
+				<a href="../index.html">
+					<img src="img/Helpet.png"/>
+				</a>
+			</center>
+		</div>
+	</div>		
+</body>
+</html>

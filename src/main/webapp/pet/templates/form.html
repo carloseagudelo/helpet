@@ -1,0 +1,48 @@
+<form>
+  <fieldset>
+    <legend>{{ textButton }}</legend>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <label>Nombre</label>
+        <input type="text" placeholder="Nombre" ng-model="mascota.nombre" required>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-4 columns">
+        <label>Edad</label>
+        <input type="text" placeholder="Edad" ng-model="mascota.edad" required>
+      </div>
+
+      <div class="large-4 columns">
+        <label>Raza</label>
+        <input type="text" placeholder="Raza" ng-model="mascota.raza" required>
+      </div>
+
+      <div class="large-4 columns">
+        <div class="row collapse">
+          <label>Observaciones</label>
+            <input type="text" placeholder="Observaciones" ng-model="mascota.observaciones" required>
+        </div>
+      </div>
+
+      <div class="large-4 columns">
+        <div class="row collapse">
+          <label>Usuario</label>
+            <input type="text" placeholder="Usuario" ng-model="mascota.usuario" required>
+        </div>
+      </div>
+
+      <div class="large-4 columns">
+        <div class="row collapse">
+          <label>Fecha</label>
+            <input type="text" placeholder="AAAA-MM-DD" ng-model="mascota.fecha" required>
+        </div>
+      </div>
+
+    </div>
+    <button type="submit"  class="button large-6">{{ textButton }}</button>
+    <a href="#/" class="button large-6 success">Volver al inicio</a>
+  </fieldset>
+</form>

@@ -11,9 +11,6 @@ package com.helpet.rest;
 
 import java.rmi.RemoteException;
 import javax.ws.rs.*;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -98,9 +95,8 @@ public class UserService {
 	 * @return mensaje indicando el estado del proceso
 	*/
 	@POST
-	@Produces(MediaType.APPLICATION_JSON)
-	@Path("/login/user/{param}/password/{param1}")
-	public Response login(@PathParam("param") String email, @PathParam("param1") String password) throws RemoteException {
+	@Produces(MediaType.TEXT_HTML)
+	public Response login(@QueryParam("email") String email, @QueryParam("password") String password) throws RemoteException {
 		boolean log = false;
 		try{
 			log = userB1.login(email, password);

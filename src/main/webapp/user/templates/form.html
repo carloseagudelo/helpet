@@ -1,0 +1,55 @@
+<form>
+  <fieldset>
+    <legend>{{ textButton }}</legend>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <label>Nombre</label>
+        <input type="text" placeholder="Nombre" ng-model="usuario.nombre" required>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-4 columns">
+        <label>Apellido</label>
+        <input type="text" placeholder="Apellido" ng-model="usuario.apellido" required>
+      </div>
+
+      <div class="large-4 columns">
+        <label>Ciudad</label>
+        <input type="text" placeholder="Ciudad" ng-model="usuario.ciudad" required>
+      </div>
+
+      <div class="large-4 columns">
+        <div class="row collapse">
+          <label>Dirección</label>
+            <input type="text" placeholder="Dirección" ng-model="usuario.direccion" required>
+        </div>
+      </div>
+
+      <div class="large-4 columns">
+        <div class="row collapse">
+          <label>Email</label>
+            <input type="email" placeholder="Email" ng-model="usuario.email" required>
+        </div>
+      </div>
+
+      <div class="large-4 columns">
+        <div class="row collapse">
+          <label>Cédula</label>
+            <input type="text" placeholder="Cédula" ng-model="usuario.cedula" required>
+        </div>
+      </div>
+      
+      <div class="large-4 columns">
+        <div class="row collapse">
+          <label>Fecha</label>
+            <input type="text" placeholder="AAAA-MM-DD" ng-model="usuario.fecha" required>
+        </div>
+      </div>
+
+    </div>
+    <button type="submit"  class="button large-6">{{ textButton }}</button>
+    <a href="#/" class="button large-6 success">Volver al inicio</a>
+  </fieldset>
+</form>
