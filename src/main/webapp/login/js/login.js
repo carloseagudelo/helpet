@@ -5,9 +5,10 @@
  */
 
 
-var appUser = angular.module("user", []);
+var appUser = angular.module("Usuarios", ["ngRoute"]);
 
-var URL_SERVICIO_AUTENTICACION = "http://localhost:8080/helpet/rest/UserService/login";
+var URL_SERVICIO_AUTENTICACION = "http://localhost:8080/helpet/rest/UserService";
+
 
 /**
  * Define los servicios necesario para la autenticación del usuario
@@ -17,15 +18,14 @@ appUser.service('Usuario', function($http){
 	/**
 	 * Llama el servicio web para autenticar.
 	 */
-	this.autenticar = function(us, pas){
-		alert('pepe');
+	this.autenticar = function(email, password){
 		return $http({
 			method: 'POST',
 			url: URL_SERVICIO_AUTENTICACION,
 			params: {
-				user: us,
-				pas: pas
-			} // login y clave tal cual como se llama en el servicio
+				email: email,
+				password: password
+			} 
 		});
 	};
 });
@@ -46,25 +46,25 @@ appUser.config(['$routeProvider', function($routeProvider){
 /**
  * Controlador para funcionalidad de la autenticación del usuario
  */
-appUser.controller("contLogin", function($scope, $location, User){
-	$scope.email = "";
-	$scope.password = "";
+appUser.controller("contLogin", function($scope, $location, Usuario){
+	$scope.nombreUsuario = "";
+	$scope.contrasena = "";
 	
 	$scope.autenticar = function(){
-		User.autenticar($scope.email, 
-		$scope.password).then(function successCallback(response) {
-			if(response.data == Faile){
-				alert(response.data);
-				return;
-			}else{
-				alert("Datos correctos");
-				$cookies.email = $scope.email;
-				$location.url("/users");
-			}
-			$scope.user = "";
-			$scope.password = "";
-		  }, function errorCallback(response) {
-		    alert(data);
-		  });
+		Usuario.autenticar($scope.nombreUsuario, 
+				$scope.contrasena).then(function successCallback(response) {
+					if(response.data != ''){
+						alert(response.data);
+						return;
+					}else{
+						alert("Datos correctos");
+						$cookies.nombreUsuario = $scope.nombreUsuario;
+						$location.url("../pet/index_pet");
+					}
+					$scope.nombreUsuario = "";
+					$scope.contrasena = "";
+				  }, function errorCallback(response) {
+				    alert(data);
+				  });
 	};
 });
