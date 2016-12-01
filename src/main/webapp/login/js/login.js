@@ -5,7 +5,7 @@
  */
 
 
-var appUser = angular.module("Usuarios", []);
+var appUser = angular.module("user", []);
 
 var URL_SERVICIO_AUTENTICACION = "http://localhost:8080/helpet/rest/UserService/login";
 
@@ -18,6 +18,7 @@ appUser.service('Usuario', function($http){
 	 * Llama el servicio web para autenticar.
 	 */
 	this.autenticar = function(us, pas){
+		alert('pepe');
 		return $http({
 			method: 'POST',
 			url: URL_SERVICIO_AUTENTICACION,
@@ -38,41 +39,30 @@ appUser.config(['$routeProvider', function($routeProvider){
 	$routeProvider.when('/', {
 		templateUrl: "login.html",
 		controller: "contLogin"
-	});
-	
-	$routeProvider.when('/clientes', {
-		templateUrl: "listaClientes.html",
-		controller: "contClientes"
-	});
-	
-	$routeProvider.when('/cliente', {
-		templateUrl: "cliente.html",
-		controller: "contCliente"
-	});
-	
+	});	
 }]);
 
 
 /**
  * Controlador para funcionalidad de la autenticación del usuario
  */
-appUser.controller("contLogin", function($scope, $location, Usuario){
-	$scope.nombreUsuario = "";
-	$scope.contrasena = "";
+appUser.controller("contLogin", function($scope, $location, User){
+	$scope.email = "";
+	$scope.password = "";
 	
 	$scope.autenticar = function(){
-		Usuario.autenticar($scope.nombreUsuario, 
-		$scope.contrasena).then(function successCallback(response) {
-			if(response.data != ''){
+		User.autenticar($scope.email, 
+		$scope.password).then(function successCallback(response) {
+			if(response.data == Faile){
 				alert(response.data);
 				return;
 			}else{
 				alert("Datos correctos");
-				$cookies.nombreUsuario = $scope.nombreUsuario;
-				$location.url("/clientes");
+				$cookies.email = $scope.email;
+				$location.url("/users");
 			}
-			$scope.nombreUsuario = "";
-			$scope.contrasena = "";
+			$scope.user = "";
+			$scope.password = "";
 		  }, function errorCallback(response) {
 		    alert(data);
 		  });
