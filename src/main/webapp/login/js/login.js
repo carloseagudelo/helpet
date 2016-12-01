@@ -1,15 +1,13 @@
 /**
  * 	login.js
- * 	@autor Laura Martinez Londoño
+ * 	@autor Laura Martinez Londoño, Carlos Agudelo
  * 	Descripción: Modulo de AngularJS que nos permite hacer la autenticación del usuarion
  */
 
 
 var appUser = angular.module("Usuarios", []);
 
-var URL_SERVICIO_AUTENTICACION = "http://localhost:11901/EjemploJersey/rest/ServicioUsuario";
-var URL_SERVICIO_LISTA_CLIENTES = "http://localhost:11901/EjemploJersey/rest/ServicioCliente";
-
+var URL_SERVICIO_AUTENTICACION = "http://localhost:8080/helpet/rest/UserService/login";
 
 /**
  * Define los servicios necesario para la autenticación del usuario
@@ -19,13 +17,13 @@ appUser.service('Usuario', function($http){
 	/**
 	 * Llama el servicio web para autenticar.
 	 */
-	this.autenticar = function(usuario, pws){
+	this.autenticar = function(us, pas){
 		return $http({
-			method: 'GET',
+			method: 'POST',
 			url: URL_SERVICIO_AUTENTICACION,
 			params: {
-				login: usuario,
-				clave: pws
+				user: us,
+				pas: pas
 			} // login y clave tal cual como se llama en el servicio
 		});
 	};
@@ -64,19 +62,19 @@ appUser.controller("contLogin", function($scope, $location, Usuario){
 	
 	$scope.autenticar = function(){
 		Usuario.autenticar($scope.nombreUsuario, 
-				$scope.contrasena).then(function successCallback(response) {
-					if(response.data != ''){
-						alert(response.data);
-						return;
-					}else{
-						alert("Datos correctos");
-						$cookies.nombreUsuario = $scope.nombreUsuario;
-						$location.url("/clientes");
-					}
-					$scope.nombreUsuario = "";
-					$scope.contrasena = "";
-				  }, function errorCallback(response) {
-				    alert(data);
-				  });
+		$scope.contrasena).then(function successCallback(response) {
+			if(response.data != ''){
+				alert(response.data);
+				return;
+			}else{
+				alert("Datos correctos");
+				$cookies.nombreUsuario = $scope.nombreUsuario;
+				$location.url("/clientes");
+			}
+			$scope.nombreUsuario = "";
+			$scope.contrasena = "";
+		  }, function errorCallback(response) {
+		    alert(data);
+		  });
 	};
 });

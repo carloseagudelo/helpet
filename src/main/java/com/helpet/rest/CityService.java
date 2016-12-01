@@ -77,7 +77,7 @@ public class CityService {
 	 * @throws DaoException manejo de excepciones a partir de clase personalida, donde se lleva el error a un log de auditoria
 	 * @return lista de los registros en formato JSON
 	*/
-	@GET
+	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/list/id/{param}")
 	public List<City> listCityPerCountry(@PathParam("param") Integer id) throws RemoteException {

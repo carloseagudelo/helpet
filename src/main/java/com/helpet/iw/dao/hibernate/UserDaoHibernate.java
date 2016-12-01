@@ -1,8 +1,12 @@
 package com.helpet.iw.dao.hibernate;
 
 import org.hibernate.Transaction;
+
+import java.util.List;
+
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -129,26 +133,26 @@ public class UserDaoHibernate implements UserDao
 	public boolean autentificacion(String email, String password) throws DaoException
 	{
 		Session session = null;
-		User user = null;
+		List<User> user = null;
 		try
 		{
 			session = sessionFactory.openSession();
-			Criteria cri = session.createCriteria(User.class);
-			cri.add(Restrictions.eq("email",email));
-			cri.add(Restrictions.eq("password",password));
-			user = (User)cri.uniqueResult();
+			Query query = session.createSQLQuery(
+			"select * from user where email = :email and password = :password")
+			.setParameter("email", email).setParameter("password", password);
+			user = query.list();
 		}
 		catch(HibernateException e)
 		{
 			throw new DaoException(e);
 		}
-		if(user != null)
+		if(user.size() > 0)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 	

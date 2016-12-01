@@ -96,9 +96,10 @@ public class UserService {
 	*/
 	@POST
 	@Produces(MediaType.TEXT_HTML)
-	public Response login(@QueryParam("email") String email, @QueryParam("password") String password) throws RemoteException {
+	@Path("/login/{param}/{param1}")
+	public Response login(@PathParam("param") String email, @PathParam("param1") String password) throws RemoteException {
 		boolean log = false;
-		try{
+		try{			
 			log = userB1.login(email, password);
 		}
 		catch(DaoException e){

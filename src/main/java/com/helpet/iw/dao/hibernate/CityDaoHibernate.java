@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -84,8 +85,11 @@ public class CityDaoHibernate implements CityDao
 		try
 		{
 			session = sessionFactory.openSession();	
-			Criteria cri = session.createCriteria(City.class).add(Restrictions.eq("id",id));
-			city = (City)cri.uniqueResult();
+			Query query = session.createSQLQuery(
+					"select * from city where country = :id")
+					.setParameter("id", id);
+			//Criteria cri = session.createCriteria(City.class).add(Restrictions.eq("id",id));
+			city = (City)query.uniqueResult();
 		}
 		catch(HibernateException e)
 		{
