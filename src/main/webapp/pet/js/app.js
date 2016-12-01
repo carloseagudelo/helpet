@@ -1,3 +1,9 @@
+/**
+ * 	app.js
+ * 	@autor Laura Martinez, Carlos Agudelo
+ * 	Descripción: Modulo de AngularJS que permite enrutar los templates de las mascotas
+ */
+
 //creamos nuestro modulo llamado app
 var app = angular.module("app", []);
 

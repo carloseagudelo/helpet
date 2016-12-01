@@ -1,7 +1,7 @@
 /**
  * 	login.js
- * 	@autor Laura Martinez Londoño, Carlos Agudelo
- * 	Descripción: Modulo de AngularJS que nos permite hacer la autenticación del usuarion
+ * 	@autor Laura Martinez, Carlos Agudelo
+ * 	Descripción: Modulo de AngularJS que nos permite hacer la autenticación del usuario
  */
 
 

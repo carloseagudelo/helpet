@@ -1,3 +1,9 @@
+/**
+ * 	controller.js
+ * 	@autor Laura Martinez, Carlos Agudelo
+ * 	Descripción: Modulo de AngularJS que contiene los controladores de las diferentes vistas de las mascotas
+ */
+
 app.controller("appController", function appController($scope){
 	//añadimos mascotas por defecto
 	$scope.mascotas = [
@@ -37,7 +43,7 @@ app.controller("addController", function addController($scope,$location){
 })
 
 app.controller("editController", function editController($scope,$routeParams,$location){
-	//obtenemos el mascota a editar con routeParams
+	//obtenemos la mascota que se va a editar con routeParams
 	$scope.textButton = "Editar mascota";
 	$scope.mascota = $scope.mascotas[$routeParams.id];
 	$scope.editPet = function(){
@@ -47,15 +53,14 @@ app.controller("editController", function editController($scope,$routeParams,$lo
 	}
 })
 
-//eliminamos la mascota dependiendo de su id
+//eliminamos la mascota de acuerdo a de su id
 app.controller("removeController", function removeController($scope,$routeParams,$location){
 	$scope.mascota = $scope.mascotas[$routeParams.id];
 	$scope.removePet = function(){
 		//con splice  eliminamos un mascota del array mascotas, en este caso le decimos que debe eliminar 
 		//el que tenga el id que le pasamos con $routeParams, y con el 1, le decimos que sólo 
 		//debe eliminar 1, la función splice, como primer parámetro necesita la posición, que en este caso
-		//es la id, y el segundo debe ser el número de elementos a eliminar, cabe decir que splice tiene
-		//más variantes, y que sirve para añadir y eliminar elementos en un array, pero eso para otro momento
+		//es la id, y el segundo debe ser el número de elementos a eliminar
 		$scope.mascotas.splice($routeParams.id, 1);
 		$location.url("/");
 	}

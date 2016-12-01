@@ -1,3 +1,9 @@
+/**
+ * 	app.js
+ * 	@autor Laura Martinez, Carlos Agudelo
+ * 	Descripción: Modulo de AngularJS que permite enrutar los templates de los usuarios
+ */
+
 //creamos nuestro modulo llamado app
 var app = angular.module("app", []);
 
@@ -12,17 +18,17 @@ app.config(function($routeProvider){
      controller : "infoController"
     })
 	.when("/add", {
-		title: 'Añadir mascota',
+		title: 'Añadir usuario',
 		templateUrl : "templates/add.html",
 		controller : "addController"
 	})
 	.when("/edit/:id", {
-		title: 'Editar mascota',
+		title: 'Editar usuario',
 		templateUrl : "templates/edit.html",
 		controller : "editController"
 	})
  	.when("/remove/:id", {
- 		title: 'Eliminar mascota',
+ 		title: 'Eliminar usuario',
  		templateUrl : "templates/remove.html",
  		controller : "removeController"
  	})
